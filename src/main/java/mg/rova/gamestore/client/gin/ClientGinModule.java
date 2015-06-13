@@ -1,6 +1,9 @@
 package mg.rova.gamestore.client.gin;
 
 import mg.rova.gamestore.client.bundle.Messages;
+import mg.rova.gamestore.client.main.MainUi;
+import mg.rova.gamestore.client.ui.HomeViewImpl;
+import mg.rova.gamestore.client.ui.HomeView;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -15,7 +18,7 @@ public class ClientGinModule extends AbstractGinModule {
 
 	@Override
 	protected void configure() {
-//		bind(HomeView.class).to(ChatListViewImpl.class).in(Singleton.class);
+		bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
 	}
 
 	@Provides
@@ -31,11 +34,11 @@ public class ClientGinModule extends AbstractGinModule {
 		return new PlaceController(eventBus);
 	}
 
-//	@Provides
-//	@Singleton
-//	public MainUi getMainUi() {
-//		return new MainUi();
-//	}
+	@Provides
+	@Singleton
+	public MainUi getMainUi() {
+		return new MainUi();
+	}
 
 	@Provides
 	@Singleton

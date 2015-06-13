@@ -1,0 +1,72 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:DockLayoutPanel ui:field="dockLayoutPanel" unit='PX'>
+		<g:north size='200'>
+			<g:ScrollPanel ui:field="northLayoutPanel">
+				<g:HTMLPanel>
+					<ul>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+					</ul>
+					<ul>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+					</ul>
+					<ul>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+					</ul>
+					<ul>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+					</ul>
+					<ul>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+					</ul>
+					<ul>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+						<li>Sidebar</li>
+					</ul>
+				</g:HTMLPanel>
+			</g:ScrollPanel>
+		</g:north>
+		<g:center>
+			<g:ScrollPanel ui:field="centerLayoutPanel">
+				<g:Label>Body</g:Label>
+			</g:ScrollPanel>
+		</g:center>
+		<g:south size="200">
+			<g:ScrollPanel ui:field="southLayoutPanel">
+				<g:Label>Bottom</g:Label>
+			</g:ScrollPanel></g:south>
+		<g:west size='200'>
+			<g:HTML>
+				<ul>
+					<li>Sidebar</li>
+					<li>Sidebar</li>
+					<li>Sidebar</li>
+				</ul>
+			</g:HTML>
+		</g:west>
+		<g:east size='200'>
+			<g:HTML>
+				<ul>
+					<li>Sidebar</li>
+					<li>Sidebar</li>
+					<li>Sidebar</li>
+				</ul>
+			</g:HTML>
+		</g:east>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 
