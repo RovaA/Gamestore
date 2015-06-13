@@ -1,4 +1,4 @@
-package mg.rova.gamestore.client;
+package mg.rova.gamestore.client.bundle;
 
 public interface Messages extends com.google.gwt.i18n.client.Messages {
   
