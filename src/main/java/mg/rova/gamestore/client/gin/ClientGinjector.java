@@ -4,6 +4,7 @@ import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
 import mg.rova.gamestore.client.ui.HomeView;
 import mg.rova.gamestore.client.ui.MenuView;
+import mg.rova.gamestore.client.ui.NavigationView;
 
 import org.jboss.errai.bus.client.api.messaging.MessageBus;
 
@@ -24,6 +25,8 @@ public interface ClientGinjector extends Ginjector {
 	MessageBus getMessageBus();
 	
 	MainUi getMainUi();
+	
+	NavigationView getNavigationView();
 	
 	MenuView getMenuView();
 	

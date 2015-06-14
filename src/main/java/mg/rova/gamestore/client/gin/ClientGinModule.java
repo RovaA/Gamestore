@@ -6,6 +6,8 @@ import mg.rova.gamestore.client.ui.HomeView;
 import mg.rova.gamestore.client.ui.HomeViewImpl;
 import mg.rova.gamestore.client.ui.MenuView;
 import mg.rova.gamestore.client.ui.MenuViewImpl;
+import mg.rova.gamestore.client.ui.NavigationView;
+import mg.rova.gamestore.client.ui.NavigationViewImpl;
 
 import org.jboss.errai.bus.client.ErraiBus;
 import org.jboss.errai.bus.client.api.messaging.MessageBus;
@@ -23,6 +25,7 @@ public class ClientGinModule extends AbstractGinModule {
 
 	@Override
 	protected void configure() {
+		bind(NavigationView.class).to(NavigationViewImpl.class).in(Singleton.class);
 		bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
 		bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
 	}

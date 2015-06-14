@@ -5,6 +5,7 @@ import mg.rova.gamestore.client.main.MainUi;
 import mg.rova.gamestore.client.mvp.AppPlaceHistoryMapper;
 import mg.rova.gamestore.client.mvp.ContentActivityMapper;
 import mg.rova.gamestore.client.mvp.MenuActivityMapper;
+import mg.rova.gamestore.client.mvp.NavigationActivityMapper;
 import mg.rova.gamestore.client.place.HomePlace;
 
 import com.google.gwt.activity.shared.ActivityManager;
@@ -25,11 +26,16 @@ public class Gamestore implements EntryPoint {
 		EventBus eventBus = injector.getEventBus();
 		PlaceController placeController = injector.getPlaceController();
 		MainUi mainUi = injector.getMainUi();
-		
+
+		// Start ActivityManager for the main widget with our ActivityMapper
+		ActivityMapper navigationActivityMapper = new NavigationActivityMapper(injector);
+		ActivityManager navigationActivityManager = new ActivityManager(navigationActivityMapper, eventBus);
+		navigationActivityManager.setDisplay(mainUi.getNorthLayoutPanel());
+
 		// Start ActivityManager for the main widget with our ActivityMapper
 		ActivityMapper menuActivityMapper = new MenuActivityMapper(injector);
 		ActivityManager menuActivityManager = new ActivityManager(menuActivityMapper, eventBus);
-		menuActivityManager.setDisplay(mainUi.getNorthLayoutPanel());
+		menuActivityManager.setDisplay(mainUi.getWestLayoutPanel());
 
 		// Start ActivityManager for the main widget with our ActivityMapper
 		ActivityMapper contentActivityMapper = new ContentActivityMapper(injector);

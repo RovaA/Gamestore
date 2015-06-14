@@ -14,27 +14,39 @@ public class MainUi extends Composite {
 
 	interface MainUiUiBinder extends UiBinder<Widget, MainUi> {
 	}
-	
+
 	@UiField
 	DockLayoutPanel dockLayoutPanel;
 	@UiField
 	ScrollPanel northLayoutPanel;
 	@UiField
 	ScrollPanel centerLayoutPanel;
+	@UiField
+	ScrollPanel westLayoutPanel;
+	@UiField
+	ScrollPanel eastLayoutPanel;
 
 	public MainUi() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-	
+
 	public DockLayoutPanel getDockLayoutPanel() {
 		return dockLayoutPanel;
 	}
-	
+
 	public ScrollPanel getNorthLayoutPanel() {
 		return northLayoutPanel;
 	}
-	
+
 	public ScrollPanel getCenterLayoutPanel() {
 		return centerLayoutPanel;
+	}
+
+	public ScrollPanel getWestLayoutPanel() {
+		return westLayoutPanel;
+	}
+
+	public ScrollPanel getEastLayoutPanel() {
+		return eastLayoutPanel;
 	}
 }

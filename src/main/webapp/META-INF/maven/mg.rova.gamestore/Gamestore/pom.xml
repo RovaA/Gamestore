@@ -59,7 +59,7 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Gin -->
 		<dependency>
 			<groupId>com.google.gwt.inject</groupId>
@@ -80,13 +80,19 @@
 			<artifactId>gwtbootstrap3</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.gwtbootstrap3</groupId>
+			<artifactId>gwtbootstrap3-extras</artifactId>
+			<version>0.9.1</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" 
 			update them in DevMode -->
 		<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
-		
+
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -103,7 +109,7 @@
 				</includes>
 			</resource>
 		</resources>
-		
+
 		<plugins>
 
 			<!-- GWT Maven Plugin -->
