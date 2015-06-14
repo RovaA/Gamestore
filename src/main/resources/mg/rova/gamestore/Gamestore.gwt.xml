@@ -16,6 +16,7 @@
 	<inherits name="com.google.gwt.inject.Inject" />
 	<inherits name='org.jboss.errai.bus.ErraiBus' />
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
+	<inherits name="org.gwtbootstrap3.extras.growl.Growl"/>
 
 	<!-- Specify the app entry point class. -->
 	<entry-point class='mg.rova.gamestore.client.Gamestore' />
