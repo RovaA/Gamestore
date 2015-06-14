@@ -2,8 +2,13 @@ package mg.rova.gamestore.client.gin;
 
 import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
-import mg.rova.gamestore.client.ui.HomeViewImpl;
 import mg.rova.gamestore.client.ui.HomeView;
+import mg.rova.gamestore.client.ui.HomeViewImpl;
+import mg.rova.gamestore.client.ui.MenuView;
+import mg.rova.gamestore.client.ui.MenuViewImpl;
+
+import org.jboss.errai.bus.client.ErraiBus;
+import org.jboss.errai.bus.client.api.messaging.MessageBus;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -18,6 +23,7 @@ public class ClientGinModule extends AbstractGinModule {
 
 	@Override
 	protected void configure() {
+		bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
 		bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
 	}
 
@@ -46,9 +52,9 @@ public class ClientGinModule extends AbstractGinModule {
 		return GWT.create(Messages.class);
 	}
 	
-//	@Provides
-//	@Singleton
-//	public MessageBus getMessageBus() {
-//		return ErraiBus.get();
-//	}
+	@Provides
+	@Singleton
+	public MessageBus getMessageBus() {
+		return ErraiBus.get();
+	}
 }

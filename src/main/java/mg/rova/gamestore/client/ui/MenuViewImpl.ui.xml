@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<b:Navbar>
+			<b:NavbarHeader>
+				<b:NavbarBrand>Gamestore</b:NavbarBrand>
+				<b:NavbarCollapseButton dataTarget="#navbar-collapse" />
+			</b:NavbarHeader>
+
+			<b:NavbarCollapse b:id="navbar-collapse">
+				<b:NavbarNav>
+					<b:AnchorListItem active="true">Item 1</b:AnchorListItem>
+					<b:AnchorListItem>Item 2</b:AnchorListItem>
+					<b:AnchorListItem>Item 3</b:AnchorListItem>
+
+					<b:ListDropDown>
+						<b:AnchorButton dataToggle="DROPDOWN">Dropdown</b:AnchorButton>
+						<b:DropDownMenu>
+							<b:AnchorListItem>Dropdown 1</b:AnchorListItem>
+							<b:AnchorListItem>Dropdown 2</b:AnchorListItem>
+							<b:AnchorListItem>Dropdown 3</b:AnchorListItem>
+						</b:DropDownMenu>
+					</b:ListDropDown>
+				</b:NavbarNav>
+
+				<b:NavbarForm pull="LEFT">
+					<b:TextBox placeholder="Search" addStyleNames="col-lg-8" />
+				</b:NavbarForm>
+
+				<b:NavbarText pull="RIGHT">
+					<g:HTMLPanel>
+						Signed in as
+						<b:NavbarLink>, Admin</b:NavbarLink>
+					</g:HTMLPanel>
+				</b:NavbarText>
+			</b:NavbarCollapse>
+		</b:Navbar>
+	</g:HTMLPanel>
+</ui:UiBinder> 

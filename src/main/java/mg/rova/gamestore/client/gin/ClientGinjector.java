@@ -3,6 +3,9 @@ package mg.rova.gamestore.client.gin;
 import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
 import mg.rova.gamestore.client.ui.HomeView;
+import mg.rova.gamestore.client.ui.MenuView;
+
+import org.jboss.errai.bus.client.api.messaging.MessageBus;
 
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
@@ -18,9 +21,11 @@ public interface ClientGinjector extends Ginjector {
 	
 	Messages getMessages();
 	
-//	MessageBus getMessageBus();
+	MessageBus getMessageBus();
 	
 	MainUi getMainUi();
+	
+	MenuView getMenuView();
 	
 	HomeView getChatListView();
 }
