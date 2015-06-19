@@ -3,7 +3,10 @@
 target/
 src/main/webapp/gwt-unitCache/
 src/main/gwt-unitCache/
+src/main/webapp/META-INF/maven/mg.rova.gamestore/Gamestore/pom.properties
 src/main/webapp/Gamestore/
 src/main/webapp/WEB-INF/classes/
 src/main/webapp/WEB-INF/lib/
 src/main/webapp/.errai/
+gwt-unitCache/
+war/
