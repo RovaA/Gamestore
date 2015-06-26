@@ -93,23 +93,6 @@
 			update them in DevMode -->
 		<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.java</include>
-					<include>**/*</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/test/resources</directory>
-				<includes>
-					<include>**/*.java</include>
-					<include>**/*.gwt.xml</include>
-				</includes>
-			</resource>
-		</resources>
-
 		<plugins>
 
 			<!-- GWT Maven Plugin -->
@@ -121,7 +104,6 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<goal>resources</goal>
 							<goal>test</goal>
 						</goals>
 					</execution>
@@ -137,6 +119,31 @@
 					</modules>
 				</configuration>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-war-plugin</artifactId> -->
+<!-- 				<version>2.1.1</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<phase>compile</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>exploded</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 				<configuration> -->
+<!-- 					<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
+<!-- 				<version>2.3.2</version> -->
+<!-- 				<configuration> -->
+<!-- 					<source>1.6</source> -->
+<!-- 					<target>1.6</target> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 
