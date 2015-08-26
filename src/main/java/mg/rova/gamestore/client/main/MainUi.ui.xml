@@ -8,56 +8,33 @@
 		<g:north size='100'>
 			<g:ScrollPanel ui:field="northLayoutPanel">
 				<g:HTMLPanel>
-					<ul>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-					</ul>
-					<ul>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-					</ul>
-					<ul>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-					</ul>
-					<ul>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-					</ul>
-					<ul>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-					</ul>
-					<ul>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-						<li>Sidebar</li>
-					</ul>
 				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:north>
 		<g:center>
 			<g:ScrollPanel ui:field="centerLayoutPanel">
-				<g:Label>Body</g:Label>
+				<g:HTMLPanel>
+				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:center>
 		<g:south size="200">
 			<g:ScrollPanel ui:field="southLayoutPanel">
-				<g:Label>Bottom</g:Label>
+				<g:HTMLPanel>
+					South
+				</g:HTMLPanel>
 			</g:ScrollPanel></g:south>
 		<g:west size='200'>
 			<g:ScrollPanel ui:field="westLayoutPanel">
-				<g:Label>West</g:Label>
+				<g:HTMLPanel>
+					West
+				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:west>
 		<g:east size='100'>
 			<g:ScrollPanel ui:field="eastLayoutPanel">
-				<g:Label>East</g:Label>
+				<g:HTMLPanel>
+					East
+				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:east>
 	</g:DockLayoutPanel>

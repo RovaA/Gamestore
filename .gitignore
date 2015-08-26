@@ -10,3 +10,4 @@ src/main/webapp/WEB-INF/lib/
 src/main/webapp/.errai/
 gwt-unitCache/
 war/
+.gwt/
