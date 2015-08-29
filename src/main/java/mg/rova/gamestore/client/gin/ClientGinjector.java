@@ -27,5 +27,5 @@ public interface ClientGinjector extends Ginjector {
 	
 	MenuView getMenuView();
 	
-	HomeView getChatListView();
+	HomeView getHomeView();
 }
