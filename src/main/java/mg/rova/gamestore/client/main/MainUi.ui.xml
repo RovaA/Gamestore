@@ -5,7 +5,7 @@
 	
 	</ui:style>
 	<g:DockLayoutPanel ui:field="dockLayoutPanel" unit='PX'>
-		<g:north size='100'>
+		<g:north size='0'>
 			<g:ScrollPanel ui:field="northLayoutPanel">
 				<g:HTMLPanel>
 				</g:HTMLPanel>
@@ -17,7 +17,7 @@
 				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:center>
-		<g:south size="200">
+		<g:south size="0">
 			<g:ScrollPanel ui:field="southLayoutPanel">
 				<g:HTMLPanel>
 					South
@@ -30,7 +30,7 @@
 				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:west>
-		<g:east size='100'>
+		<g:east size='0'>
 			<g:ScrollPanel ui:field="eastLayoutPanel">
 				<g:HTMLPanel>
 					East
