@@ -20,6 +20,9 @@
 
 	<!-- Specify the app entry point class. -->
 	<entry-point class='mg.rova.gamestore.client.Gamestore' />
+	
+	<set-configuration-property name="CssResource.enableGss" value="true" />
+	<set-configuration-property name="CssResource.legacy" value="true" />
 
 	<!-- Specify the paths for translatable code -->
 	<source path='client' />

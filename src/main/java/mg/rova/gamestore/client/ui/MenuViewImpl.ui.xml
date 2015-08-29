@@ -1,16 +1,52 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
-	<ui:style>
+	<ui:style gss="true">
 	.important {
 		font-weight: bold;
 	}
+	
+	.row {
+		margin-bottom: 20px;
+	}
 	</ui:style>
 	<g:HTMLPanel>
-		<b:LinkedGroup>
-			<b:LinkedGroupItem text="New" />
-			<b:LinkedGroupItem text="My apps" />
-			<b:LinkedGroupItem text="Popular" />
-		</b:LinkedGroup>
+		<b:Container fluid="true">
+			<b:Row addStyleNames="{style.row}">
+				<b:Heading size="H1" text="Gamestore" />
+			</b:Row>
+			<b:Row addStyleNames="{style.row}">
+				<b:InputGroup>
+					<b:InputGroupButton>
+						<b:Button type="PRIMARY" text="Search" />
+					</b:InputGroupButton>
+					<b:TextBox placeholder="search..." />
+				</b:InputGroup>
+			</b:Row>
+			<b:Row addStyleNames="{style.row}">
+				<b:LinkedGroup>
+					<b:LinkedGroupItem text="Home" />
+					<b:LinkedGroupItem text="Account" />
+				</b:LinkedGroup>
+			</b:Row>
+			<b:Row addStyleNames="{style.row}">
+				<b:ButtonGroup>
+					<b:Button>Categories</b:Button>
+					<b:Button dataToggle="DROPDOWN" />
+					<b:DropDownMenu>
+						<b:AnchorListItem>RPG</b:AnchorListItem>
+						<b:AnchorListItem>FPS</b:AnchorListItem>
+						<b:AnchorListItem>MMO RPG</b:AnchorListItem>
+					</b:DropDownMenu>
+				</b:ButtonGroup>
+			</b:Row>
+			<b:Row addStyleNames="{style.row}">
+				<b:LinkedGroup>
+					<b:LinkedGroupItem text="New" />
+					<b:LinkedGroupItem text="My apps" />
+					<b:LinkedGroupItem text="Popular" />
+				</b:LinkedGroup>
+			</b:Row>
+		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 

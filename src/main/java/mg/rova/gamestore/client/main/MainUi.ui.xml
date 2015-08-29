@@ -23,7 +23,7 @@
 					South
 				</g:HTMLPanel>
 			</g:ScrollPanel></g:south>
-		<g:west size='200'>
+		<g:west size='300'>
 			<g:ScrollPanel ui:field="westLayoutPanel">
 				<g:HTMLPanel>
 					West
