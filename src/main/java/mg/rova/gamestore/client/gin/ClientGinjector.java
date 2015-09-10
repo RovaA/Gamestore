@@ -7,6 +7,7 @@ import com.google.web.bindery.event.shared.EventBus;
 
 import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
+import mg.rova.gamestore.client.request.AppRequestFactory;
 import mg.rova.gamestore.client.ui.HomeView;
 import mg.rova.gamestore.client.ui.MenuView;
 
@@ -16,6 +17,8 @@ public interface ClientGinjector extends Ginjector {
 	EventBus getEventBus();
 	
 	PlaceController getPlaceController();
+	
+	AppRequestFactory getAppRequestFactory();
 	
 	Messages getMessages();
 	

@@ -11,6 +11,7 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 
 import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
+import mg.rova.gamestore.client.request.AppRequestFactory;
 import mg.rova.gamestore.client.ui.HomeView;
 import mg.rova.gamestore.client.ui.HomeViewImpl;
 import mg.rova.gamestore.client.ui.MenuView;
@@ -39,6 +40,15 @@ public class ClientGinModule extends AbstractGinModule {
 
 	@Provides
 	@Singleton
+	@Inject
+	public AppRequestFactory getAppRequestFactory(EventBus eventBus) {
+		AppRequestFactory appRequestFactory = GWT.create(AppRequestFactory.class);
+		appRequestFactory.initialize(eventBus);
+		return appRequestFactory;
+	}
+
+	@Provides
+	@Singleton
 	public MainUi getMainUi() {
 		return new MainUi();
 	}
@@ -48,5 +58,5 @@ public class ClientGinModule extends AbstractGinModule {
 	public Messages getMessages() {
 		return GWT.create(Messages.class);
 	}
-	
+
 }

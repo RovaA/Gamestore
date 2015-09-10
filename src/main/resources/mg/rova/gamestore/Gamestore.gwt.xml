@@ -17,6 +17,7 @@
 	<inherits name='org.jboss.errai.bus.ErraiBus' />
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
 	<inherits name="org.gwtbootstrap3.extras.growl.Growl"/>
+	<inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
 
 	<!-- Specify the app entry point class. -->
 	<entry-point class='mg.rova.gamestore.client.Gamestore' />
