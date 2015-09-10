@@ -69,13 +69,6 @@
 			<version>2.1.2</version>
 		</dependency>
 
-		<!-- ErraiBus -->
-		<dependency>
-			<groupId>org.jboss.errai</groupId>
-			<artifactId>errai-bus</artifactId>
-			<version>3.1.2.Final</version>
-		</dependency>
-
 		<!-- Gwt Bootstrap -->
 		<dependency>
 			<groupId>org.gwtbootstrap3</groupId>

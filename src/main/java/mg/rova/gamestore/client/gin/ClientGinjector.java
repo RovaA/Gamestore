@@ -1,7 +1,5 @@
 package mg.rova.gamestore.client.gin;
 
-import org.jboss.errai.bus.client.api.messaging.MessageBus;
-
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.google.gwt.place.shared.PlaceController;
@@ -20,8 +18,6 @@ public interface ClientGinjector extends Ginjector {
 	PlaceController getPlaceController();
 	
 	Messages getMessages();
-	
-	MessageBus getMessageBus();
 	
 	MainUi getMainUi();
 	

@@ -1,8 +1,5 @@
 package mg.rova.gamestore.client.gin;
 
-import org.jboss.errai.bus.client.ErraiBus;
-import org.jboss.errai.bus.client.api.messaging.MessageBus;
-
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.place.shared.PlaceController;
@@ -52,9 +49,4 @@ public class ClientGinModule extends AbstractGinModule {
 		return GWT.create(Messages.class);
 	}
 	
-	@Provides
-	@Singleton
-	public MessageBus getMessageBus() {
-		return ErraiBus.get();
-	}
 }
