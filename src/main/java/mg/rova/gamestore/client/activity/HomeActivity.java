@@ -30,7 +30,7 @@ public class HomeActivity extends AbstractActivity implements HomeView.Presenter
 	public void initHasData() {
 		final ListDataProvider<String> listDataProvider = new ListDataProvider<String>();
 		final List<String> listToWrap = listDataProvider.getList();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			listToWrap.add(i + "");
 		}
 		listDataProvider.addDataDisplay(view.getHasData());

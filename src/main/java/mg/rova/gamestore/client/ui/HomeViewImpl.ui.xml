@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style gss="true">
 	.content-row {
-		margin-top : 100px;
+		margin-top : 90px;
 	}
 	</ui:style>
 	<g:HTMLPanel>
