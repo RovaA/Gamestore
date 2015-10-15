@@ -8,5 +8,8 @@ public interface MenuView extends IsWidget {
 
 	public interface Presenter {
 		
+		void onHome();
+		
+		void onAccount();
 	}
 }

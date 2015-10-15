@@ -12,6 +12,8 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
 import mg.rova.gamestore.client.request.AppRequestFactory;
+import mg.rova.gamestore.client.ui.AccountView;
+import mg.rova.gamestore.client.ui.AccountViewImpl;
 import mg.rova.gamestore.client.ui.HomeView;
 import mg.rova.gamestore.client.ui.HomeViewImpl;
 import mg.rova.gamestore.client.ui.MenuView;
@@ -21,8 +23,10 @@ public class ClientGinModule extends AbstractGinModule {
 
 	@Override
 	protected void configure() {
+		bind(MainUi.class).in(Singleton.class);
 		bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
 		bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
+		bind(AccountView.class).to(AccountViewImpl.class).in(Singleton.class);
 	}
 
 	@Provides
@@ -45,12 +49,6 @@ public class ClientGinModule extends AbstractGinModule {
 		AppRequestFactory appRequestFactory = GWT.create(AppRequestFactory.class);
 		appRequestFactory.initialize(eventBus);
 		return appRequestFactory;
-	}
-
-	@Provides
-	@Singleton
-	public MainUi getMainUi() {
-		return new MainUi();
 	}
 
 	@Provides

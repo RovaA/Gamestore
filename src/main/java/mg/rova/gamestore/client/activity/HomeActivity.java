@@ -1,11 +1,13 @@
 package mg.rova.gamestore.client.activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.AsyncDataProvider;
+import com.google.gwt.view.client.HasData;
 
 import mg.rova.gamestore.client.gin.ClientGinjector;
 import mg.rova.gamestore.client.ui.HomeView;
@@ -14,6 +16,8 @@ public class HomeActivity extends AbstractActivity implements HomeView.Presenter
 	
 	protected ClientGinjector injector;
 	protected HomeView view;
+	protected AsyncDataProvider<String> dataProvider;
+	protected HasData<String> dataDisplay;
 	
 	public HomeActivity(ClientGinjector injector) {
 		this.injector = injector;
@@ -23,16 +27,25 @@ public class HomeActivity extends AbstractActivity implements HomeView.Presenter
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		view.setPresenter(this);
-		initHasData();
+		dataProvider = new AsyncDataProvider<String>() {
+
+			@Override
+			protected void onRangeChanged(HasData<String> hasData) {
+				if (dataDisplay == null)
+					dataDisplay = hasData;
+				findData();
+			}
+		};
+		dataProvider.addDataDisplay(view.getHasData());
 		panel.setWidget(view);
 	}
 	
-	public void initHasData() {
-		final ListDataProvider<String> listDataProvider = new ListDataProvider<String>();
-		final List<String> listToWrap = listDataProvider.getList();
+	protected void findData() {
+		final List<String> listToWrap = new ArrayList<String>();
 		for (int i = 0; i < 5; i++) {
-			listToWrap.add(i + "");
+			listToWrap.add(i + " " + i + "" + i + "" + i + "" + i + "" + i + "");
 		}
-		listDataProvider.addDataDisplay(view.getHasData());
+		dataDisplay.setRowData(0, listToWrap);
+		dataDisplay.setRowCount(listToWrap.size());
 	}
 }

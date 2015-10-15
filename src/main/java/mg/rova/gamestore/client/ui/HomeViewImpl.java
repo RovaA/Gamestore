@@ -23,7 +23,7 @@ public class HomeViewImpl extends Composite implements HomeView {
 
 	interface Templates extends SafeHtmlTemplates {
 
-		@SafeHtmlTemplates.Template("<div><h4>{0}</h4><br/><span>{1}</span></div>")
+		@SafeHtmlTemplates.Template("<div><h3>{0}</h3><br/><span>{1}</span></div>")
 		SafeHtml cell(SafeHtml title, SafeHtml subtitle);
 	}
 

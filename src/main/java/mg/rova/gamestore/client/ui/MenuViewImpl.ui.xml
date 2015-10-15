@@ -25,8 +25,8 @@
 			</b:Row>
 			<b:Row addStyleNames="{style.row}">
 				<b:LinkedGroup>
-					<b:LinkedGroupItem text="Home" />
-					<b:LinkedGroupItem text="Account" />
+					<b:LinkedGroupItem ui:field="home" text="Home" />
+					<b:LinkedGroupItem ui:field="account" text="Account" />
 				</b:LinkedGroup>
 			</b:Row>
 			<b:Row addStyleNames="{style.row}">
