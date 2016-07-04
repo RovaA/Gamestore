@@ -2,7 +2,7 @@ package mg.rova.gamestore.server.domain.locator;
 
 import com.google.web.bindery.requestfactory.shared.ServiceLocator;
 
-public class DomainServiceLocator implements ServiceLocator {
+public class DAOServiceLocator implements ServiceLocator {
 
 	@Override
 	public Object getInstance(Class<?> clazz) {

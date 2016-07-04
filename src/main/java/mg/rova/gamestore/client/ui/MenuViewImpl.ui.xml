@@ -16,6 +16,9 @@
 				<b:Heading size="H1" text="Gamestore" />
 			</b:Row>
 			<b:Row addStyleNames="{style.row}">
+				<b:Button ui:field="loginButton" text="Log in" />
+			</b:Row>
+			<b:Row addStyleNames="{style.row}">
 				<b:InputGroup>
 					<b:InputGroupButton>
 						<b:Button type="PRIMARY" text="Search" />
@@ -43,7 +46,7 @@
 			<b:Row addStyleNames="{style.row}">
 				<b:LinkedGroup>
 					<b:LinkedGroupItem text="New" />
-					<b:LinkedGroupItem text="My apps" />
+					<b:LinkedGroupItem text="My applications" />
 					<b:LinkedGroupItem text="Popular" />
 				</b:LinkedGroup>
 			</b:Row>
