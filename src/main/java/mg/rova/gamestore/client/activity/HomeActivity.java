@@ -3,23 +3,23 @@ package mg.rova.gamestore.client.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import mg.rova.gamestore.client.dagger.AppInjector;
+import mg.rova.gamestore.client.ui.HomeView;
+
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 
-import mg.rova.gamestore.client.gin.ClientGinjector;
-import mg.rova.gamestore.client.ui.HomeView;
-
 public class HomeActivity extends AbstractActivity implements HomeView.Presenter {
 	
-	protected ClientGinjector injector;
+	protected AppInjector injector;
 	protected HomeView view;
 	protected AsyncDataProvider<String> dataProvider;
 	protected HasData<String> dataDisplay;
 	
-	public HomeActivity(ClientGinjector injector) {
+	public HomeActivity(AppInjector injector) {
 		this.injector = injector;
 		view = injector.getHomeView();
 	}

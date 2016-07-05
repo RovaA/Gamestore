@@ -1,7 +1,7 @@
 package mg.rova.gamestore.client.mvp;
 
 import mg.rova.gamestore.client.activity.MenuActivity;
-import mg.rova.gamestore.client.gin.ClientGinjector;
+import mg.rova.gamestore.client.dagger.AppInjector;
 
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
@@ -9,10 +9,10 @@ import com.google.gwt.place.shared.Place;
 
 public class MenuActivityMapper implements ActivityMapper {
 
-	protected ClientGinjector injector;
+	protected AppInjector injector;
 	protected MenuActivity menuActivity;
 
-	public MenuActivityMapper(ClientGinjector injector) {
+	public MenuActivityMapper(AppInjector injector) {
 		this.injector = injector;
 	}
 
