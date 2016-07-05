@@ -1,6 +1,7 @@
 package mg.rova.gamestore.client.activity;
 
-import mg.rova.gamestore.client.dagger.AppInjector;
+import javax.inject.Inject;
+
 import mg.rova.gamestore.client.ui.AccountView;
 
 import com.google.gwt.activity.shared.AbstractActivity;
@@ -8,13 +9,12 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 public class AccountActivity extends AbstractActivity implements AccountView.Presenter {
-	
-	protected AppInjector injector;
+
 	protected AccountView view;
 
-	public AccountActivity(AppInjector injector) {
-		this.injector = injector;
-		view = injector.getAccountView();
+	@Inject
+	public AccountActivity(AccountView view) {
+		this.view = view;
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class AccountActivity extends AbstractActivity implements AccountView.Pre
 
 	@Override
 	public void onSubmit() {
-		
+
 	}
 
 }

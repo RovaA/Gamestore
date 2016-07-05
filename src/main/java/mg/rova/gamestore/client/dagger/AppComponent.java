@@ -4,6 +4,8 @@ import javax.inject.Singleton;
 
 import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
+import mg.rova.gamestore.client.mvp.ContentActivityMapper;
+import mg.rova.gamestore.client.mvp.MenuActivityMapper;
 import mg.rova.gamestore.client.ui.AccountView;
 import mg.rova.gamestore.client.ui.HomeView;
 import mg.rova.gamestore.client.ui.MenuView;
@@ -15,7 +17,7 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = AppModule.class)
-public interface AppInjector {
+public interface AppComponent {
 
 	EventBus getEventBus();
 
@@ -30,5 +32,9 @@ public interface AppInjector {
 	HomeView getHomeView();
 
 	AccountView getAccountView();
+
+	MenuActivityMapper getMenuActivityMapper();
+
+	ContentActivityMapper getContentActivityMapper();
 
 }

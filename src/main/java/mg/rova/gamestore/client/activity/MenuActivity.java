@@ -1,36 +1,39 @@
 package mg.rova.gamestore.client.activity;
 
-import mg.rova.gamestore.client.dagger.AppInjector;
+import javax.inject.Inject;
+
 import mg.rova.gamestore.client.place.AccountPlace;
 import mg.rova.gamestore.client.place.HomePlace;
 import mg.rova.gamestore.client.ui.MenuView;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 public class MenuActivity extends AbstractActivity implements MenuView.Presenter {
 
-	protected AppInjector injector;
-	protected MenuView menuView;
+	protected MenuView view;
+	protected PlaceController placeController;
 
-	public MenuActivity(AppInjector injector) {
-		this.injector = injector;
-		menuView = injector.getMenuView();
+	@Inject
+	public MenuActivity(MenuView view, PlaceController placeController) {
+		this.view = view;
+		this.placeController = placeController;
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		menuView.setPresenter(this);
-		panel.setWidget(menuView);
+		view.setPresenter(this);
+		panel.setWidget(view);
 	}
 
 	@Override
 	public void onHome() {
-		if (injector.getPlaceController().getWhere() instanceof HomePlace)
+		if (placeController.getWhere() instanceof HomePlace)
 			return;
-		injector.getPlaceController().goTo(new HomePlace(""));
+		placeController.goTo(new HomePlace(""));
 	}
 
 	@Override
@@ -40,8 +43,8 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 			Window.alert("You must be logged first");
 			return;
 		}
-		if (injector.getPlaceController().getWhere() instanceof AccountPlace)
+		if (placeController.getWhere() instanceof AccountPlace)
 			return;
-		injector.getPlaceController().goTo(new AccountPlace(""));
+		placeController.goTo(new AccountPlace(""));
 	}
 }
