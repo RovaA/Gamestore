@@ -23,23 +23,20 @@ public class Gamestore implements EntryPoint {
 		EventBus eventBus = component.getEventBus();
 		MainUi mainUi = component.getMainUi();
 
-		// Start ActivityManager for the main widget with our ActivityMapper
 		ActivityMapper menuActivityMapper = component.getMenuActivityMapper();
 		ActivityManager menuActivityManager = new ActivityManager(menuActivityMapper, eventBus);
-		menuActivityManager.setDisplay(mainUi.getWestLayoutPanel());
+		menuActivityManager.setDisplay(mainUi.getNorthLayoutPanel());
 
-		// Start ActivityManager for the main widget with our ActivityMapper
 		ActivityMapper contentActivityMapper = component.getContentActivityMapper();
 		ActivityManager ContentActivityManager = new ActivityManager(contentActivityMapper, eventBus);
 		ContentActivityManager.setDisplay(mainUi.getCenterLayoutPanel());
 
-		// Start PlaceHistoryHandler with our PlaceHistoryMapper
 		AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
 		PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
 		historyHandler.register(component.getPlaceController(), eventBus, new HomePlace(""));
 
 		RootLayoutPanel.get().add(mainUi);
-		// Goes to the place represented on URL else default place
+		
 		historyHandler.handleCurrentHistory();
 	}
 }

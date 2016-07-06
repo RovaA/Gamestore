@@ -1,11 +1,11 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui">
 	<ui:style>
 	
 	</ui:style>
 	<g:DockLayoutPanel ui:field="dockLayoutPanel" unit='PX'>
-		<g:north size='0'>
+		<g:north size='100'>
 			<g:ScrollPanel ui:field="northLayoutPanel">
 				<g:HTMLPanel>
 				</g:HTMLPanel>
@@ -20,20 +20,18 @@
 		<g:south size="0">
 			<g:ScrollPanel ui:field="southLayoutPanel">
 				<g:HTMLPanel>
-					South
 				</g:HTMLPanel>
-			</g:ScrollPanel></g:south>
-		<g:west size='300'>
+			</g:ScrollPanel>
+		</g:south>
+		<g:west size='0'>
 			<g:ScrollPanel ui:field="westLayoutPanel">
 				<g:HTMLPanel>
-					West
 				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:west>
 		<g:east size='0'>
 			<g:ScrollPanel ui:field="eastLayoutPanel">
 				<g:HTMLPanel>
-					East
 				</g:HTMLPanel>
 			</g:ScrollPanel>
 		</g:east>

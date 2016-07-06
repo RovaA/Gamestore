@@ -1,9 +1,14 @@
 package mg.rova.gamestore.client.ui;
 
-import org.gwtbootstrap3.client.ui.LinkedGroupItem;
+import gwt.material.design.client.ui.MaterialAnchorButton;
+import gwt.material.design.client.ui.MaterialNavBar;
+import gwt.material.design.client.ui.MaterialSearch;
+import gwt.material.design.client.ui.MaterialToast;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -18,28 +23,41 @@ public class MenuViewImpl extends Composite implements MenuView {
 	}
 
 	@UiField
-	LinkedGroupItem home;
+	protected MaterialNavBar navBar;
 	@UiField
-	LinkedGroupItem account;
-	
+	protected MaterialNavBar navBarSearch;
+	@UiField
+	protected MaterialSearch searchText;
+	@UiField
+	protected MaterialAnchorButton logButton;
+
 	protected Presenter presenter;
 
 	public MenuViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		searchText.addCloseHandler(new CloseHandler<String>() {
+
+			@Override
+			public void onClose(CloseEvent<String> event) {
+				navBar.setVisible(true);
+				navBarSearch.setVisible(false);
+			}
+		});
 	}
-	
+
 	@Override
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
 	}
-	
-	@UiHandler("home")
-	public void onClickHome(ClickEvent event) {
-		presenter.onHome();
+
+	@UiHandler("searchButton")
+	public void onSearch(ClickEvent event) {
+		navBar.setVisible(false);
+		navBarSearch.setVisible(true);
 	}
-	
-	@UiHandler("account")
-	public void onClickAccount(ClickEvent event) {
-		presenter.onAccount();
+
+	@UiHandler("logButton")
+	public void onLog(ClickEvent event) {
+		MaterialToast.fireToast("You are log out.");
 	}
 }
