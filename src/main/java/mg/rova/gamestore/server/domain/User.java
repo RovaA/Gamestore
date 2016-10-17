@@ -90,5 +90,9 @@ public class User {
 			return;
 		applications.remove(application);
 	}
+	
+	public static User findUser(Long id) {
+		return null;
+	}
 
 }
