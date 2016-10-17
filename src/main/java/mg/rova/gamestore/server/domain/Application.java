@@ -16,6 +16,8 @@ public class Application {
 	
 	private Date date;
 	
+	private String path;
+	
 	public Application() {
 		
 	}
@@ -66,6 +68,14 @@ public class Application {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public static Application findApplication(Long id) {

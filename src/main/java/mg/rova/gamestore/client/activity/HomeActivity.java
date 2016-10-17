@@ -5,23 +5,26 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import mg.rova.gamestore.client.ui.HomeView;
-
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 
+import mg.rova.gamestore.client.request.AppRequestFactory;
+import mg.rova.gamestore.client.ui.HomeView;
+
 public class HomeActivity extends AbstractActivity implements HomeView.Presenter {
 
 	protected HomeView view;
 	protected AsyncDataProvider<String> dataProvider;
 	protected HasData<String> dataDisplay;
+	protected AppRequestFactory requestFactory;
 
 	@Inject
-	public HomeActivity(HomeView view) {
+	public HomeActivity(HomeView view, AppRequestFactory requestFactory) {
 		this.view = view;
+		this.requestFactory = requestFactory;
 	}
 
 	@Override
