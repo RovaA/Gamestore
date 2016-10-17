@@ -11,8 +11,13 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
+
+import gwt.material.design.client.ui.MaterialCard;
+import gwt.material.design.client.ui.MaterialCardContent;
+import gwt.material.design.client.ui.MaterialLabel;
 
 public class HomeViewImpl extends Composite implements HomeView {
 
@@ -29,6 +34,8 @@ public class HomeViewImpl extends Composite implements HomeView {
 
 	@UiField(provided = true)
 	protected CellTable<String> cellTable = new CellTable<String>();
+	@UiField
+	protected SimplePanel panel;
 
 	protected Presenter presenter;
 
@@ -43,6 +50,11 @@ public class HomeViewImpl extends Composite implements HomeView {
 		});
 		cellTable.setWidth("100%");
 		initWidget(uiBinder.createAndBindUi(this));
+		MaterialCard materialCard = new MaterialCard();
+		MaterialCardContent content = new MaterialCardContent();
+		content.add(new MaterialLabel("Its a test"));
+		materialCard.add(content);
+		panel.add(materialCard);
 	}
 
 	static class ApplicationCell extends AbstractCell<String> {
