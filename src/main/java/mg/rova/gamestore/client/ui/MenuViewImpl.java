@@ -58,6 +58,6 @@ public class MenuViewImpl extends Composite implements MenuView {
 
 	@UiHandler("logButton")
 	public void onLog(ClickEvent event) {
-		MaterialToast.fireToast("You are log out.");
+		MaterialToast.fireToast("You are log in.");
 	}
 }
