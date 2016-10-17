@@ -19,13 +19,17 @@
 		</m:MaterialNavBar>
 		<m:MaterialSideNav m:id="sidenav" type="PUSH" alwaysShowActivator="true" showOnAttach="false" backgroundColor="grey lighten-4" top="68" shadow="0">
 			<m:MaterialNavBrand>Menu</m:MaterialNavBrand>
-			<m:MaterialLink textColor="grey" text="Home" />
-			<m:MaterialLink textColor="grey" text="My Account" />
-			<m:MaterialLink textColor="grey" text="My Applications" />
-			<m:MaterialLink textColor="grey" text="Popular" />
+			<m:MaterialLink ui:field="homeMaterialLink" textColor="grey" text="Home" />
+			<m:MaterialLink ui:field="accountMaterialLink" textColor="grey" text="My Account" />
+			<m:MaterialLink ui:field="applicationMaterialLink" textColor="grey" text="My Applications" />
+			<m:MaterialLink ui:field="popularMaterialLink" textColor="grey" text="Popular" />
 		</m:MaterialSideNav>
 		<m:MaterialFAB axis="HORIZONTAL">
-			<m:MaterialAnchorButton ui:field="logButton" type="FLOATING" backgroundColor="blue" text="Login" size="LARGE" />
+			<m:MaterialAnchorButton ui:field="logButton" type="FLOATING" backgroundColor="blue" text="+" size="LARGE" />
+			<m:MaterialFABList>
+				<m:MaterialAnchorButton ui:field="createButton" type="FLOATING" waves="LIGHT" backgroundColor="red" text="Create"/>
+				<m:MaterialAnchorButton ui:field="loginButton" type="FLOATING" waves="LIGHT" backgroundColor="green" text="Login"/>
+			</m:MaterialFABList>
 		</m:MaterialFAB>
 	</g:HTMLPanel>
 </ui:UiBinder> 

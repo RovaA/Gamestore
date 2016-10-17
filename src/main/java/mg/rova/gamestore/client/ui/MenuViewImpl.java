@@ -1,10 +1,5 @@
 package mg.rova.gamestore.client.ui;
 
-import gwt.material.design.client.ui.MaterialAnchorButton;
-import gwt.material.design.client.ui.MaterialNavBar;
-import gwt.material.design.client.ui.MaterialSearch;
-import gwt.material.design.client.ui.MaterialToast;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.CloseEvent;
@@ -14,6 +9,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
+
+import gwt.material.design.client.ui.MaterialAnchorButton;
+import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialNavBar;
+import gwt.material.design.client.ui.MaterialSearch;
 
 public class MenuViewImpl extends Composite implements MenuView {
 
@@ -29,7 +29,15 @@ public class MenuViewImpl extends Composite implements MenuView {
 	@UiField
 	protected MaterialSearch searchText;
 	@UiField
+	protected MaterialLink homeMaterialLink;
+	@UiField
+	protected MaterialLink accountMaterialLink;
+	@UiField
 	protected MaterialAnchorButton logButton;
+	@UiField
+	protected MaterialAnchorButton createButton;
+	@UiField
+	protected MaterialAnchorButton loginButton;
 
 	protected Presenter presenter;
 
@@ -56,8 +64,23 @@ public class MenuViewImpl extends Composite implements MenuView {
 		navBarSearch.setVisible(true);
 	}
 
-	@UiHandler("logButton")
-	public void onLog(ClickEvent event) {
-		MaterialToast.fireToast("You are log in.");
+	@UiHandler("homeMaterialLink")
+	public void onHome(ClickEvent event) {
+		presenter.onHome();
+	}
+
+	@UiHandler("accountMaterialLink")
+	public void onAccount(ClickEvent event) {
+		presenter.onAccount();
+	}
+
+	@UiHandler("createButton")
+	public void onCreate(ClickEvent event) {
+		presenter.onCreate();
+	}
+
+	@UiHandler("loginButton")
+	public void onLogin(ClickEvent event) {
+		presenter.onLogin();
 	}
 }

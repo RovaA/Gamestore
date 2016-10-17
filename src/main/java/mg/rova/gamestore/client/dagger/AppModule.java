@@ -2,16 +2,6 @@ package mg.rova.gamestore.client.dagger;
 
 import javax.inject.Singleton;
 
-import mg.rova.gamestore.client.bundle.Messages;
-import mg.rova.gamestore.client.main.MainUi;
-import mg.rova.gamestore.client.request.AppRequestFactory;
-import mg.rova.gamestore.client.ui.AccountView;
-import mg.rova.gamestore.client.ui.AccountViewImpl;
-import mg.rova.gamestore.client.ui.HomeView;
-import mg.rova.gamestore.client.ui.HomeViewImpl;
-import mg.rova.gamestore.client.ui.MenuView;
-import mg.rova.gamestore.client.ui.MenuViewImpl;
-
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
@@ -19,6 +9,17 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 
 import dagger.Module;
 import dagger.Provides;
+import mg.rova.gamestore.client.bundle.Messages;
+import mg.rova.gamestore.client.main.MainUi;
+import mg.rova.gamestore.client.request.AppRequestFactory;
+import mg.rova.gamestore.client.ui.AccountView;
+import mg.rova.gamestore.client.ui.AccountViewImpl;
+import mg.rova.gamestore.client.ui.CreateAccountView;
+import mg.rova.gamestore.client.ui.CreateAccountViewImpl;
+import mg.rova.gamestore.client.ui.HomeView;
+import mg.rova.gamestore.client.ui.HomeViewImpl;
+import mg.rova.gamestore.client.ui.MenuView;
+import mg.rova.gamestore.client.ui.MenuViewImpl;
 
 @Module
 public class AppModule {
@@ -71,4 +72,9 @@ public class AppModule {
 		return new AccountViewImpl();
 	}
 
+	@Provides
+	public static CreateAccountView provideCreateAccountView() {
+		return new CreateAccountViewImpl();
+	}
+	
 }
