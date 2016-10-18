@@ -11,7 +11,7 @@ public class User {
 
 	private String name;
 
-	private String firstName;
+	private String firstname;
 
 	private String username;
 
@@ -47,12 +47,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getUsername() {

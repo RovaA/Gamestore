@@ -16,7 +16,7 @@ public interface UserProxy extends EntityProxy {
 
 	String getName();
 
-	String getFirstName();
+	String getFirstname();
 
 	String getUsername();
 

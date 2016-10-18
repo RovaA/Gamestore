@@ -1,0 +1,57 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui" xmlns:e="urn:import:mg.rova.gamestore.client.editor" xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<b:Container>
+			<b:Row>
+				<b:Row>
+					<b:PageHeader text="User Account"/>
+				</b:Row>
+				<b:Row>
+					<b:Column size="LG_2">
+						<b:Label text="Name"></b:Label>
+					</b:Column>
+					<b:Column size="LG_10">
+						<b:TextBox ui:field="name" placeholder="Name..."></b:TextBox>
+					</b:Column>
+				</b:Row>
+				<b:Row>
+					<b:Column size="LG_2">
+						<b:Label text="Firstname"></b:Label>
+					</b:Column>
+					<b:Column size="LG_10">
+						<b:TextBox ui:field="firstname" placeholder="Firstname..."></b:TextBox>
+					</b:Column>
+				</b:Row>
+				<b:Row>
+					<b:Column size="LG_2">
+						<b:Label text="Username"></b:Label>
+					</b:Column>
+					<b:Column size="LG_10">
+						<b:TextBox ui:field="username" placeholder="Username..."></b:TextBox>
+					</b:Column>
+				</b:Row>
+				<b:Row>
+					<b:Column size="LG_2">
+						<b:Label text="Password"></b:Label>
+					</b:Column>
+					<b:Column size="LG_10">
+						<b:TextBox ui:field="password" placeholder="Password..."></b:TextBox>
+					</b:Column>
+				</b:Row>
+				<b:Row>
+					<b:Column size="LG_2">
+						<b:Label text="Password confirmation"></b:Label>
+					</b:Column>
+					<b:Column size="LG_10">
+						<b:TextBox ui:field="passwordConfirm" placeholder="Password..."></b:TextBox>
+					</b:Column>
+				</b:Row>
+				<b:Label text="Applications"></b:Label>
+				<e:ApplicationListEditor ui:field="applications"></e:ApplicationListEditor>
+			</b:Row>
+		</b:Container>
+	</g:HTMLPanel>
+</ui:UiBinder> 
