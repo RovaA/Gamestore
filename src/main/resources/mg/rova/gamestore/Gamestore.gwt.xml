@@ -22,6 +22,7 @@
 	<inherits name="gwt.material.design.GwtMaterialDesignBasic" />
 	<inherits name="gwt.material.design.themes.GwtMaterialThemeRed" />
 	<inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
+	<inherits name='org.hibernate.validator.HibernateValidator' />
 
 	<!-- Specify the app entry point class. -->
 	<entry-point class='mg.rova.gamestore.client.Gamestore' />

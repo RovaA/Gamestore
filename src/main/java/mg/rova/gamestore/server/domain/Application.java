@@ -2,10 +2,20 @@ package mg.rova.gamestore.server.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
+@Entity
 public class Application {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Version
 	private Integer version;
 
 	private String title;
@@ -19,7 +29,7 @@ public class Application {
 	private String path;
 
 	private String description;
-
+	
 	public Application() {
 
 	}
