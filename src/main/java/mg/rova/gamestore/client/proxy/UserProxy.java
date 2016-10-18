@@ -11,16 +11,24 @@ import mg.rova.gamestore.server.domain.User;
 public interface UserProxy extends EntityProxy {
 
 	Long getId();
-
+	
 	Long getVersion();
 
 	String getName();
+	
+	void setName(String name);
 
 	String getFirstname();
+	
+	void setFirstname(String firstname);
 
 	String getUsername();
+	
+	void setUsername(String username);
 
 	String getPassword();
+	
+	void setPassword(String password);
 
 	List<ApplicationProxy> getApplications();
 

@@ -1,9 +1,9 @@
 package mg.rova.gamestore.server.domain.dao;
 
-public class UserDao {
-	
-	public UserDao() {
-		
-	}
+import mg.rova.gamestore.server.domain.User;
 
+public interface UserDao {
+	
+	public User create(User user);
+	
 }

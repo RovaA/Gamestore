@@ -41,14 +41,14 @@
 						<b:TextBox ui:field="password" placeholder="Password..."></b:TextBox>
 					</b:Column>
 				</b:Row>
-				<b:Row>
-					<b:Column size="LG_2">
-						<b:Label text="Password confirmation"></b:Label>
-					</b:Column>
-					<b:Column size="LG_10">
-						<b:TextBox ui:field="passwordConfirm" placeholder="Password..."></b:TextBox>
-					</b:Column>
-				</b:Row>
+<!-- 				<b:Row> -->
+<!-- 					<b:Column size="LG_2"> -->
+<!-- 						<b:Label text="Password confirmation"></b:Label> -->
+<!-- 					</b:Column> -->
+<!-- 					<b:Column size="LG_10"> -->
+<!-- 						<b:TextBox ui:field="passwordConfirm" placeholder="Password..."></b:TextBox> -->
+<!-- 					</b:Column> -->
+<!-- 				</b:Row> -->
 				<b:Label text="Applications"></b:Label>
 				<e:ApplicationListEditor ui:field="applications"></e:ApplicationListEditor>
 			</b:Row>

@@ -1,8 +1,5 @@
 package mg.rova.gamestore.server.domain.dao;
 
-public class ApplicationDao {
+public interface ApplicationDao {
 
-	public ApplicationDao() {
-		
-	}
 }
