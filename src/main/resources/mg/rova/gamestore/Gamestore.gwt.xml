@@ -15,6 +15,8 @@
 	<inherits name="com.google.gwt.place.Place" />
 	<inherits name="com.google.gwt.activity.Activity" />
 	<inherits name="com.google.gwt.inject.Inject" />
+	<inherits name="com.google.gwt.uibinder.UiBinder" />
+	<inherits name='com.google.gwt.editor.Editor' />
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3" />
 	<inherits name="org.gwtbootstrap3.extras.growl.Growl" />
 	<inherits name="gwt.material.design.GwtMaterialDesignBasic" />
