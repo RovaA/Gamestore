@@ -12,8 +12,13 @@ public class GuiceServletModule extends ServletModule {
 	@Override
 	public void configureServlets() {
 
+		bind(ExceptionFilter.class).in(Singleton.class);
+		filter("/*").through(ExceptionFilter.class);
+
 		install(new JpaPersistModule("persistenceUnit"));
 		filter("/*").through(PersistFilter.class);		
+
+		GuiceShiroWebModule.bindGuiceFilter(binder());
 		
 		bind(AppRequestFactoryServlet.class).in(Singleton.class);
 		serve("/gwtRequest").with(AppRequestFactoryServlet.class);

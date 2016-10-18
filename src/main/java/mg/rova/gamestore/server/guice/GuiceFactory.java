@@ -1,9 +1,15 @@
 package mg.rova.gamestore.server.guice;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.guice.aop.ShiroAopModule;
+import org.apache.shiro.mgt.SecurityManager;
+
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.persist.PersistService;
+
+import mg.rova.gamestore.server.servlet.AppGuiceServletContextListener;
 
 public class GuiceFactory {
 
@@ -11,6 +17,14 @@ public class GuiceFactory {
 
 	static {
 
+	}
+
+	private static class WebInitializer {
+		@Inject
+		WebInitializer() {
+			final SecurityManager securityManager_ = injector.getInstance(SecurityManager.class);
+			SecurityUtils.setSecurityManager(securityManager_);
+		}
 	}
 
 	/**
@@ -25,7 +39,12 @@ public class GuiceFactory {
 	}
 
 	protected static void initInjector() {
-		injector = Guice.createInjector(new GuiceModule(), new GuiceServletModule());
+		injector = Guice.createInjector(new GuiceModule(), new ShiroAopModule(), new GuiceShiroWebModule(AppGuiceServletContextListener.servletContext_), new GuiceServletModule());
+		try {
+			injector.getInstance(WebInitializer.class);
+			// injector.getInstance(JPAInitializer.class);
+		} catch (NullPointerException npe_) {
+		}
 	}
 
 	public static <A> A getInstance(Class<A> clazz) {
