@@ -2,10 +2,21 @@ package mg.rova.gamestore.server.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Version;
+
+@Entity
 public class Application {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Version
 	private Integer version;
 
 	private String title;
@@ -19,6 +30,9 @@ public class Application {
 	private String path;
 
 	private String description;
+
+	@ManyToOne(targetEntity=User.class)
+	private User user;
 
 	public Application() {
 
@@ -86,6 +100,14 @@ public class Application {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public static Application findApplication(Long id) {

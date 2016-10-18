@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright - Art.Megiddo Consulting Informatique -->
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>mg.rova.gamestore.server.domain.Application</class>
+		<class>mg.rova.gamestore.server.domain.User</class>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/gamestore?autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10" />
+			<property name="hibernate.connection.username" value="gamestore" />
+			<property name="hibernate.connection.password" value="gamestore" />
+			<property name="hibernate.default_schema" value="gamestore" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<!-- value="create" to build a new database on each run; value="update" to modify an existing database; value="create-drop" means the same as "create" but also drops tables when Hibernate closes; value="validate" 
+				makes no changes to the database -->
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
+			<property name="hibernate.connection.charSet" value="UTF-8" />
+			<!-- Uncomment the following two properties for JBoss only -->
+			<!-- property name="hibernate.validator.apply_to_ddl" value="false" / -->
+			<!-- property name="hibernate.validator.autoregister_listeners" value="false" / -->
+			<!-- Default is false for backwards compatibility. Should be used on all new projects -->
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+			<!-- EhCache -->
+			<property name="hibernate.cache.use_second_level_cache" value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.current_session_context_class" value="thread" />
+			<property name="hibernate.connection.pool_size" value="1" />
+			<property name="hibernate.dbcp.maxWait" value="20000" />
+
+			<!-- Verify the connection -->
+			<property name="hibernate.dbcp.validationQuery" value="select now()" />
+			<property name="hibernate.dbcp.testOnBorrow" value="true" />
+			<property name="hibernate.dbcp.testOnReturn" value="false" />
+
+		</properties>
+	</persistence-unit>
+</persistence>
