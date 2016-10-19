@@ -25,7 +25,7 @@ public class GuiceServletModule extends ServletModule {
 		serve("/gwtRequest").with(AppRequestFactoryServlet.class);
 		
 		bind(FileUploadServlet.class).in(Singleton.class);
-		serve("/fileUpload").with(FileUploadServlet.class);
+		serve("/Gamestore/fileUpload").with(FileUploadServlet.class);
 		
 	}
 }

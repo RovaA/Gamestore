@@ -1,61 +1,87 @@
 package mg.rova.gamestore.client.editor;
 
-import java.util.List;
-
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.EditorDelegate;
-import com.google.gwt.editor.client.LeafValueEditor;
-import com.google.gwt.editor.client.ValueAwareEditor;
+import com.google.gwt.editor.client.IsEditor;
+import com.google.gwt.editor.client.adapters.EditorSource;
+import com.google.gwt.editor.client.adapters.ListEditor;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FileUpload;
-import com.google.gwt.user.client.ui.FormPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Widget;
 
 import mg.rova.gamestore.client.proxy.ApplicationProxy;
 
-public class ApplicationListEditor extends Composite implements LeafValueEditor<List<ApplicationProxy>>, ValueAwareEditor<List<ApplicationProxy>> {
+public class ApplicationListEditor extends Composite implements IsEditor<ListEditor<ApplicationProxy, ApplicationEditor>> {
 
-	protected VerticalPanel verticalPanel = new VerticalPanel();
-	private FormPanel formPanel = new FormPanel();
-	private FileUpload fileUpload = new FileUpload();
+	private static ApplicationListEditorUiBinder uiBinder = GWT.create(ApplicationListEditorUiBinder.class);
+
+	interface ApplicationListEditorUiBinder extends UiBinder<Widget, ApplicationListEditor> {
+	}
+	
+	public interface Presenter {
+		
+		ApplicationProxy newApplicationProxy();
+		
+	}
+
+	private class ApplicationEditorSource extends EditorSource<ApplicationEditor> {
+		@Override
+		public ApplicationEditor create(final int index) {
+			ApplicationEditor subEditor = new ApplicationEditor();
+			googleEmails.insert(subEditor, index);
+			return subEditor;
+		}
+
+		@Override
+		public void dispose(ApplicationEditor subEditor) {
+			subEditor.removeFromParent();
+		}
+
+		@Override
+		public void setIndex(ApplicationEditor editor, int index) {
+			googleEmails.insert(editor, index);
+		}
+	}
+
+	@UiField
+	FlowPanel pWidget;
+
+	@UiField
+	Button add;
+
+	@UiField
+	FlowPanel googleEmails;
+
+	@UiField
+	HTML listName;
+
+	protected ListEditor<ApplicationProxy, ApplicationEditor> editor = ListEditor.of(new ApplicationEditorSource());
+	protected Presenter presenter;
 
 	public ApplicationListEditor() {
-		formPanel.setEncoding(FormPanel.ENCODING_MULTIPART);
-		formPanel.setMethod(FormPanel.METHOD_POST);
-		formPanel.setAction(GWT.getModuleBaseURL() + "fileUpload");
-		
-		final VerticalPanel panel = new VerticalPanel();
-		fileUpload.setName("upload");
-		panel.add(fileUpload);
-		formPanel.add(panel);
-		
-		verticalPanel.add(formPanel);
-		initWidget(verticalPanel);
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@Override
-	public void setValue(List<ApplicationProxy> value) {
-		
+	public ListEditor<ApplicationProxy, ApplicationEditor> asEditor() {
+		return editor;
 	}
 
-	@Override
-	public List<ApplicationProxy> getValue() {
-		return null;
+	@UiHandler("add")
+	void onAdd(ClickEvent event) {
+		ApplicationProxy applicationProxy = presenter.newApplicationProxy();
+		Window.alert(applicationProxy + " Proxy");
+		editor.getList().add(applicationProxy);
 	}
 
-	@Override
-	public void setDelegate(EditorDelegate<List<ApplicationProxy>> delegate) {
-
-	}
-
-	@Override
-	public void flush() {
-		formPanel.submit();
-	}
-
-	@Override
-	public void onPropertyChange(String... paths) {
-
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
 	}
 
 }
