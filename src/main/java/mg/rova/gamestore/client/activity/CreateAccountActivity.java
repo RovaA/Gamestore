@@ -1,5 +1,7 @@
 package mg.rova.gamestore.client.activity;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import com.google.gwt.activity.shared.AbstractActivity;
@@ -9,6 +11,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.requestfactory.shared.Receiver;
 
+import mg.rova.gamestore.client.proxy.ApplicationProxy;
 import mg.rova.gamestore.client.proxy.UserProxy;
 import mg.rova.gamestore.client.request.AppRequestFactory;
 import mg.rova.gamestore.client.request.UserRequestContext;
@@ -42,6 +45,7 @@ public class CreateAccountActivity extends AbstractActivity implements CreateAcc
 		userProxy.setFirstname("firstname");
 		userProxy.setUsername("username");
 		userProxy.setPassword("password");
+		userProxy.setApplications(new ArrayList<ApplicationProxy>());
 		driver.edit(userProxy, requestContext);
 		requestContext.create(userProxy).to(new Receiver<UserProxy>() {
 

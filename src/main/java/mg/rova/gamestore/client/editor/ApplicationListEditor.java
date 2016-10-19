@@ -1,46 +1,61 @@
 package mg.rova.gamestore.client.editor;
 
-import java.io.IOException;
 import java.util.List;
 
-import org.gwtbootstrap3.client.ui.ValueListBox;
-
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.EditorDelegate;
 import com.google.gwt.editor.client.LeafValueEditor;
-import com.google.gwt.text.shared.Renderer;
+import com.google.gwt.editor.client.ValueAwareEditor;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FileUpload;
+import com.google.gwt.user.client.ui.FormPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 import mg.rova.gamestore.client.proxy.ApplicationProxy;
 
-public class ApplicationListEditor extends Composite implements LeafValueEditor<List<ApplicationProxy>> {
+public class ApplicationListEditor extends Composite implements LeafValueEditor<List<ApplicationProxy>>, ValueAwareEditor<List<ApplicationProxy>> {
 
-	protected ValueListBox<ApplicationProxy> applicationsListBox;
+	protected VerticalPanel verticalPanel = new VerticalPanel();
+	private FormPanel formPanel = new FormPanel();
+	private FileUpload fileUpload = new FileUpload();
 
 	public ApplicationListEditor() {
-		applicationsListBox = new ValueListBox<ApplicationProxy>(new Renderer<ApplicationProxy>() {
-
-			@Override
-			public String render(ApplicationProxy object) {
-				return object.getTitle();
-			}
-
-			@Override
-			public void render(ApplicationProxy object, Appendable appendable) throws IOException {
-				if (object == null)
-					return;
-				appendable.append(object.getTitle());
-			}
-		});
-		initWidget(applicationsListBox);
+		formPanel.setEncoding(FormPanel.ENCODING_MULTIPART);
+		formPanel.setMethod(FormPanel.METHOD_POST);
+		formPanel.setAction(GWT.getModuleBaseURL() + "fileUpload");
+		
+		final VerticalPanel panel = new VerticalPanel();
+		fileUpload.setName("upload");
+		panel.add(fileUpload);
+		formPanel.add(panel);
+		
+		verticalPanel.add(formPanel);
+		initWidget(verticalPanel);
 	}
 
 	@Override
 	public void setValue(List<ApplicationProxy> value) {
-
+		
 	}
 
 	@Override
 	public List<ApplicationProxy> getValue() {
 		return null;
+	}
+
+	@Override
+	public void setDelegate(EditorDelegate<List<ApplicationProxy>> delegate) {
+
+	}
+
+	@Override
+	public void flush() {
+		formPanel.submit();
+	}
+
+	@Override
+	public void onPropertyChange(String... paths) {
+
 	}
 
 }

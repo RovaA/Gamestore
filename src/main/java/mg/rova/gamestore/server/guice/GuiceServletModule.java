@@ -6,6 +6,7 @@ import com.google.inject.persist.jpa.JpaPersistModule;
 import com.google.inject.servlet.ServletModule;
 
 import mg.rova.gamestore.server.servlet.AppRequestFactoryServlet;
+import mg.rova.gamestore.server.servlet.FileUploadServlet;
 
 public class GuiceServletModule extends ServletModule {
 
@@ -22,6 +23,9 @@ public class GuiceServletModule extends ServletModule {
 		
 		bind(AppRequestFactoryServlet.class).in(Singleton.class);
 		serve("/gwtRequest").with(AppRequestFactoryServlet.class);
+		
+		bind(FileUploadServlet.class).in(Singleton.class);
+		serve("/fileUpload").with(FileUploadServlet.class);
 		
 	}
 }
