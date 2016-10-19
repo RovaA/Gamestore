@@ -11,9 +11,11 @@ import mg.rova.gamestore.client.main.MainUi;
 import mg.rova.gamestore.client.mvp.ContentActivityMapper;
 import mg.rova.gamestore.client.mvp.MenuActivityMapper;
 import mg.rova.gamestore.client.request.AppRequestFactory;
+import mg.rova.gamestore.client.rpc.LoginServiceAsync;
 import mg.rova.gamestore.client.ui.AccountView;
 import mg.rova.gamestore.client.ui.CreateAccountView;
 import mg.rova.gamestore.client.ui.HomeView;
+import mg.rova.gamestore.client.ui.LoginView;
 import mg.rova.gamestore.client.ui.MenuView;
 
 @Singleton
@@ -26,6 +28,10 @@ public interface AppComponent {
 
 	Messages getMessages();
 
+	AppRequestFactory getAppRequestFactory();
+
+	LoginServiceAsync getLoginService();
+
 	MainUi getMainUi();
 
 	MenuView getMenuView();
@@ -34,12 +40,12 @@ public interface AppComponent {
 
 	AccountView getAccountView();
 
+	LoginView getLoginView();
+
 	CreateAccountView getCreateAccountView();
 
 	MenuActivityMapper getMenuActivityMapper();
 
 	ContentActivityMapper getContentActivityMapper();
-
-	AppRequestFactory getAppRequestFactory();
 
 }

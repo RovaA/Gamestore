@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import mg.rova.gamestore.client.place.AccountPlace;
 import mg.rova.gamestore.client.place.CreateAccountPlace;
 import mg.rova.gamestore.client.place.HomePlace;
+import mg.rova.gamestore.client.place.LoginPlace;
 import mg.rova.gamestore.client.ui.MenuView;
 
 public class MenuActivity extends AbstractActivity implements MenuView.Presenter {
@@ -56,6 +57,6 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 
 	@Override
 	public void onLogin() {
-		
+		placeController.goTo(new LoginPlace(""));
 	}
 }

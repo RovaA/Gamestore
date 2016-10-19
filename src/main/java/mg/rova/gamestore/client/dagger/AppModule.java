@@ -12,12 +12,16 @@ import dagger.Provides;
 import mg.rova.gamestore.client.bundle.Messages;
 import mg.rova.gamestore.client.main.MainUi;
 import mg.rova.gamestore.client.request.AppRequestFactory;
+import mg.rova.gamestore.client.rpc.LoginService;
+import mg.rova.gamestore.client.rpc.LoginServiceAsync;
 import mg.rova.gamestore.client.ui.AccountView;
 import mg.rova.gamestore.client.ui.AccountViewImpl;
 import mg.rova.gamestore.client.ui.CreateAccountView;
 import mg.rova.gamestore.client.ui.CreateAccountViewImpl;
 import mg.rova.gamestore.client.ui.HomeView;
 import mg.rova.gamestore.client.ui.HomeViewImpl;
+import mg.rova.gamestore.client.ui.LoginView;
+import mg.rova.gamestore.client.ui.LoginViewImpl;
 import mg.rova.gamestore.client.ui.MenuView;
 import mg.rova.gamestore.client.ui.MenuViewImpl;
 
@@ -54,6 +58,12 @@ public class AppModule {
 	}
 
 	@Provides
+	@Singleton
+	public static LoginServiceAsync provideLoginService() {
+		return GWT.create(LoginService.class);
+	}
+
+	@Provides
 	public static MainUi provideMainUi() {
 		return new MainUi();
 	}
@@ -74,8 +84,13 @@ public class AppModule {
 	}
 
 	@Provides
+	public static LoginView provideLoginView() {
+		return new LoginViewImpl();
+	}
+
+	@Provides
 	public static CreateAccountView provideCreateAccountView() {
 		return new CreateAccountViewImpl();
 	}
-	
+
 }
