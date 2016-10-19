@@ -10,10 +10,12 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.client.constants.Display;
 import gwt.material.design.client.ui.MaterialAnchorButton;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialNavBar;
 import gwt.material.design.client.ui.MaterialSearch;
+import gwt.material.design.client.ui.MaterialToast;
 
 public class MenuViewImpl extends Composite implements MenuView {
 
@@ -38,6 +40,8 @@ public class MenuViewImpl extends Composite implements MenuView {
 	protected MaterialAnchorButton createButton;
 	@UiField
 	protected MaterialAnchorButton loginButton;
+	@UiField
+	protected MaterialAnchorButton logoutButton;
 
 	protected Presenter presenter;
 
@@ -82,5 +86,28 @@ public class MenuViewImpl extends Composite implements MenuView {
 	@UiHandler("loginButton")
 	public void onLogin(ClickEvent event) {
 		presenter.onLogin();
+	}
+
+	@UiHandler("logoutButton")
+	public void onLogout(ClickEvent event) {
+		presenter.onLogout();
+	}
+
+	@Override
+	public void showToast(String message) {
+		MaterialToast.fireToast(message);
+	}
+
+	@Override
+	public void showLogout(boolean show) {
+		if (show) {
+			createButton.setDisplay(Display.NONE);
+			loginButton.setDisplay(Display.NONE);
+			logoutButton.setDisplay(Display.BLOCK);
+		} else {
+			createButton.setDisplay(Display.BLOCK);
+			loginButton.setDisplay(Display.BLOCK);
+			logoutButton.setDisplay(Display.NONE);
+		}
 	}
 }

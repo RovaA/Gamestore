@@ -29,6 +29,7 @@
 			<m:MaterialFABList>
 				<m:MaterialAnchorButton ui:field="createButton" type="FLOATING" waves="LIGHT" backgroundColor="red" text="Create"/>
 				<m:MaterialAnchorButton ui:field="loginButton" type="FLOATING" waves="LIGHT" backgroundColor="green" text="Login"/>
+				<m:MaterialAnchorButton ui:field="logoutButton" type="FLOATING" waves="LIGHT" backgroundColor="green" text="Logout"/>
 			</m:MaterialFABList>
 		</m:MaterialFAB>
 	</g:HTMLPanel>
