@@ -8,6 +8,7 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
+import mg.rova.gamestore.client.event.LoginEvent;
 import mg.rova.gamestore.client.place.HomePlace;
 import mg.rova.gamestore.client.rpc.LoginServiceAsync;
 import mg.rova.gamestore.client.ui.LoginView;
@@ -17,6 +18,7 @@ public class LoginActivity extends AbstractActivity implements LoginView.Present
 	protected LoginView view;
 	protected PlaceController placeController;
 	protected LoginServiceAsync loginService;
+	protected EventBus eventBus;
 
 	@Inject
 	public LoginActivity(LoginView view, PlaceController placeController, LoginServiceAsync loginService) {
@@ -27,6 +29,7 @@ public class LoginActivity extends AbstractActivity implements LoginView.Present
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		this.eventBus = eventBus;
 		view.setPresenter(this);
 		panel.setWidget(view);
 	}
@@ -39,6 +42,7 @@ public class LoginActivity extends AbstractActivity implements LoginView.Present
 			public void onSuccess(Boolean result) {
 				if (result) {
 					view.showToast("You are logged in.");
+					eventBus.fireEvent(new LoginEvent());
 					placeController.goTo(new HomePlace(""));
 				} else {
 					view.showToast("Wrong username or password.");
