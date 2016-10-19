@@ -44,14 +44,17 @@ public class CreateAccountViewImpl extends Composite implements CreateAccountVie
 
 	@UiHandler("sendButton")
 	public void onSend(ClickEvent event) {
-		MaterialToast.fireToast("Account created!!");
 		presenter.onSend();
 	}
 
 	@UiHandler("cancelButton")
 	public void onCancel(ClickEvent event) {
-		MaterialToast.fireToast("Cancelling form!!");
 		presenter.onCancelling();
+	}
+
+	@Override
+	public void showToast(String message) {
+		MaterialToast.fireToast(message);
 	}
 
 }

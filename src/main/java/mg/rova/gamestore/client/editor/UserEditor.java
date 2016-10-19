@@ -9,7 +9,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-import mg.rova.gamestore.client.proxy.ApplicationProxy;
 import mg.rova.gamestore.client.proxy.UserProxy;
 
 public class UserEditor extends Composite implements Editor<UserProxy> {
@@ -19,11 +18,6 @@ public class UserEditor extends Composite implements Editor<UserProxy> {
 	interface UserEditorUiBinder extends UiBinder<Widget, UserEditor> {
 	}
 	
-	public interface Presenter {
-		
-		void addApplication(ApplicationProxy application);
-	}
-
 	@UiField
 	TextBox name;
 	@UiField
@@ -32,17 +26,9 @@ public class UserEditor extends Composite implements Editor<UserProxy> {
 	TextBox username;
 	@UiField
 	TextBox password;
-	@UiField
-	ApplicationListEditor applications;
 	
-	protected Presenter presenter;
-
 	public UserEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
-	}
-
-	public void setPresenter(ApplicationListEditor.Presenter presenter) {
-		applications.setPresenter(presenter);
 	}
 
 }

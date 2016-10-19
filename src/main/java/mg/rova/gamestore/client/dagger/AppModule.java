@@ -46,6 +46,7 @@ public class AppModule {
 	}
 
 	@Provides
+	@Singleton
 	public static AppRequestFactory provideAppRequestFactory(EventBus eventBus) {
 		AppRequestFactory appRequestFactory = GWT.create(AppRequestFactory.class);
 		appRequestFactory.initialize(eventBus);

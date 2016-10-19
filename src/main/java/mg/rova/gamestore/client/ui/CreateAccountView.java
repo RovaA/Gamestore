@@ -10,6 +10,8 @@ public interface CreateAccountView extends IsWidget {
 	
 	public UserEditor getUserEditor();
 	
+	public void showToast(String message);
+	
 	public void setPresenter(Presenter presenter);
 
 	interface Driver extends RequestFactoryEditorDriver<UserProxy, UserEditor> {
