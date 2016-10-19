@@ -121,6 +121,11 @@
 			<artifactId>gwt-material-themes</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.gwtmaterialdesign</groupId>
+			<artifactId>gwt-material-addins</artifactId>
+			<version>1.6.2</version>
+		</dependency>
 
 		<!-- Gwt Bootstrap -->
 		<dependency>
@@ -203,7 +208,7 @@
 			<artifactId>shiro-web</artifactId>
 			<version>1.2.3</version>
 		</dependency>
-		
+
 		<!-- Guice -->
 		<dependency>
 			<groupId>com.google.inject.extensions</groupId>
@@ -243,6 +248,13 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.36</version>
+		</dependency>
+
+		<!-- File Upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
 		</dependency>
 
 	</dependencies>

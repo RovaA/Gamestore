@@ -1,5 +1,7 @@
 package mg.rova.gamestore.client.ui;
 
+import org.gwtbootstrap3.client.ui.TextBox;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -10,41 +12,32 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialToast;
-import mg.rova.gamestore.client.editor.UserEditor;
 
-public class CreateAccountViewImpl extends Composite implements CreateAccountView {
+public class LoginViewImpl extends Composite implements LoginView {
 
-	private static CreateAccountViewImplUiBinder uiBinder = GWT.create(CreateAccountViewImplUiBinder.class);
+	private static LoginViewImplUiBinder uiBinder = GWT.create(LoginViewImplUiBinder.class);
 
-	interface CreateAccountViewImplUiBinder extends UiBinder<Widget, CreateAccountViewImpl> {
+	interface LoginViewImplUiBinder extends UiBinder<Widget, LoginViewImpl> {
 	}
 
 	@UiField
-	UserEditor userEditor;
+	TextBox usernameTextBox;
 	@UiField
-	MaterialButton sendButton;
+	TextBox passwordTextBox;
+	@UiField
+	MaterialButton loginButton;
 	@UiField
 	MaterialButton cancelButton;
 
 	protected Presenter presenter;
 
-	public CreateAccountViewImpl() {
+	public LoginViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@Override
-	public void setPresenter(Presenter presenter) {
-		this.presenter = presenter;
-	}
-
-	@Override
-	public UserEditor getUserEditor() {
-		return userEditor;
-	}
-
-	@UiHandler("sendButton")
-	public void onSend(ClickEvent event) {
-		presenter.onSend();
+	@UiHandler("loginButton")
+	public void onLogin(ClickEvent event) {
+		presenter.onLogin(usernameTextBox.getText(), passwordTextBox.getText());
 	}
 
 	@UiHandler("cancelButton")
@@ -55,6 +48,17 @@ public class CreateAccountViewImpl extends Composite implements CreateAccountVie
 	@Override
 	public void showToast(String message) {
 		MaterialToast.fireToast(message);
+	}
+
+	@Override
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
+	}
+
+	@Override
+	public void clear() {
+		usernameTextBox.clear();
+		passwordTextBox.clear();
 	}
 
 }

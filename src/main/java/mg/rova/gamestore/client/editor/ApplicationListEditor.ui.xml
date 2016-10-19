@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+	<g:FlowPanel ui:field="pWidget"></g:FlowPanel>
+	<g:Button ui:field="add" text="Add"></g:Button>
+	<g:FlowPanel ui:field="googleEmails"></g:FlowPanel>
+	<g:HTML ui:field="listName"></g:HTML>
+	</g:HTMLPanel>
+</ui:UiBinder> 

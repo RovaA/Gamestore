@@ -49,8 +49,6 @@
 <!-- 						<b:TextBox ui:field="passwordConfirm" placeholder="Password..."></b:TextBox> -->
 <!-- 					</b:Column> -->
 <!-- 				</b:Row> -->
-				<b:Label text="Applications"></b:Label>
-				<e:ApplicationListEditor ui:field="applications"></e:ApplicationListEditor>
 			</b:Row>
 		</b:Container>
 	</g:HTMLPanel>

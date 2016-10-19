@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import mg.rova.gamestore.client.rpc.LoginService;
-import mg.rova.gamestore.server.shiro.TempRealm;
+import mg.rova.gamestore.server.shiro.LoginRealm;
 
 @SuppressWarnings("serial")
 public class LoginServiceImpl extends RemoteServiceServlet implements LoginService {
@@ -17,14 +17,14 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 	}
 	
 	public Boolean login(String login, String pwd) {
-		return TempRealm.login(login, pwd, httpSession());
+		return LoginRealm.login(login, pwd, httpSession());
 	}
 
 	public Boolean isLoggedIn() {
-		return TempRealm.isLoggedIn(httpSession());
+		return LoginRealm.isLoggedIn(httpSession());
 	}
 
 	public Boolean logout() {
-		return TempRealm.logout(httpSession());
+		return LoginRealm.logout(httpSession());
 	}
 }

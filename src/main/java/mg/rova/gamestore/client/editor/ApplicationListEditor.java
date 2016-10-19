@@ -1,46 +1,87 @@
 package mg.rova.gamestore.client.editor;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.gwtbootstrap3.client.ui.ValueListBox;
-
-import com.google.gwt.editor.client.LeafValueEditor;
-import com.google.gwt.text.shared.Renderer;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.IsEditor;
+import com.google.gwt.editor.client.adapters.EditorSource;
+import com.google.gwt.editor.client.adapters.ListEditor;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Widget;
 
 import mg.rova.gamestore.client.proxy.ApplicationProxy;
 
-public class ApplicationListEditor extends Composite implements LeafValueEditor<List<ApplicationProxy>> {
+public class ApplicationListEditor extends Composite implements IsEditor<ListEditor<ApplicationProxy, ApplicationEditor>> {
 
-	protected ValueListBox<ApplicationProxy> applicationsListBox;
+	private static ApplicationListEditorUiBinder uiBinder = GWT.create(ApplicationListEditorUiBinder.class);
+
+	interface ApplicationListEditorUiBinder extends UiBinder<Widget, ApplicationListEditor> {
+	}
+	
+	public interface Presenter {
+		
+		ApplicationProxy newApplicationProxy();
+		
+	}
+
+	private class ApplicationEditorSource extends EditorSource<ApplicationEditor> {
+		@Override
+		public ApplicationEditor create(final int index) {
+			ApplicationEditor subEditor = new ApplicationEditor();
+			googleEmails.insert(subEditor, index);
+			return subEditor;
+		}
+
+		@Override
+		public void dispose(ApplicationEditor subEditor) {
+			subEditor.removeFromParent();
+		}
+
+		@Override
+		public void setIndex(ApplicationEditor editor, int index) {
+			googleEmails.insert(editor, index);
+		}
+	}
+
+	@UiField
+	FlowPanel pWidget;
+
+	@UiField
+	Button add;
+
+	@UiField
+	FlowPanel googleEmails;
+
+	@UiField
+	HTML listName;
+
+	protected ListEditor<ApplicationProxy, ApplicationEditor> editor = ListEditor.of(new ApplicationEditorSource());
+	protected Presenter presenter;
 
 	public ApplicationListEditor() {
-		applicationsListBox = new ValueListBox<ApplicationProxy>(new Renderer<ApplicationProxy>() {
-
-			@Override
-			public String render(ApplicationProxy object) {
-				return object.getTitle();
-			}
-
-			@Override
-			public void render(ApplicationProxy object, Appendable appendable) throws IOException {
-				if (object == null)
-					return;
-				appendable.append(object.getTitle());
-			}
-		});
-		initWidget(applicationsListBox);
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@Override
-	public void setValue(List<ApplicationProxy> value) {
-
+	public ListEditor<ApplicationProxy, ApplicationEditor> asEditor() {
+		return editor;
 	}
 
-	@Override
-	public List<ApplicationProxy> getValue() {
-		return null;
+	@UiHandler("add")
+	void onAdd(ClickEvent event) {
+		ApplicationProxy applicationProxy = presenter.newApplicationProxy();
+		Window.alert(applicationProxy + " Proxy");
+		editor.getList().add(applicationProxy);
+	}
+
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
 	}
 
 }

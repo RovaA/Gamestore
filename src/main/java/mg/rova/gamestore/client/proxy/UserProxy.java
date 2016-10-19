@@ -31,5 +31,7 @@ public interface UserProxy extends EntityProxy {
 	void setPassword(String password);
 
 	List<ApplicationProxy> getApplications();
+	
+	void setApplications(List<ApplicationProxy> applications);
 
 }

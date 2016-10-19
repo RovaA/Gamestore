@@ -17,7 +17,7 @@ public class UserEditor extends Composite implements Editor<UserProxy> {
 
 	interface UserEditorUiBinder extends UiBinder<Widget, UserEditor> {
 	}
-
+	
 	@UiField
 	TextBox name;
 	@UiField
@@ -26,9 +26,7 @@ public class UserEditor extends Composite implements Editor<UserProxy> {
 	TextBox username;
 	@UiField
 	TextBox password;
-	@UiField
-	ApplicationListEditor applications;
-
+	
 	public UserEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}

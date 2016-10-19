@@ -10,9 +10,11 @@ import com.google.gwt.place.shared.Place;
 import mg.rova.gamestore.client.activity.AccountActivity;
 import mg.rova.gamestore.client.activity.CreateAccountActivity;
 import mg.rova.gamestore.client.activity.HomeActivity;
+import mg.rova.gamestore.client.activity.LoginActivity;
 import mg.rova.gamestore.client.place.AccountPlace;
 import mg.rova.gamestore.client.place.CreateAccountPlace;
 import mg.rova.gamestore.client.place.HomePlace;
+import mg.rova.gamestore.client.place.LoginPlace;
 
 @Singleton
 public class ContentActivityMapper implements ActivityMapper {
@@ -20,12 +22,14 @@ public class ContentActivityMapper implements ActivityMapper {
 	protected HomeActivity homeActivity;
 	protected AccountActivity accountActivity;
 	protected CreateAccountActivity createAccountActivity;
+	protected LoginActivity loginActivity;
 
 	@Inject
-	public ContentActivityMapper(HomeActivity homeActivity, AccountActivity accountActivity, CreateAccountActivity createAccountActivity) {
+	public ContentActivityMapper(HomeActivity homeActivity, AccountActivity accountActivity, CreateAccountActivity createAccountActivity, LoginActivity loginActivity) {
 		this.homeActivity = homeActivity;
 		this.accountActivity = accountActivity;
 		this.createAccountActivity = createAccountActivity;
+		this.loginActivity = loginActivity;
 	}
 
 	@Override
@@ -39,6 +43,8 @@ public class ContentActivityMapper implements ActivityMapper {
 		if (place instanceof CreateAccountPlace) {
 			return createAccountActivity;
 		}
+		if (place instanceof LoginPlace)
+			return loginActivity;
 		return null;
 	}
 }
