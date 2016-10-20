@@ -7,7 +7,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<b:Container fluid="true">
+		<b:Container>
 			<b:Row addStyleNames="{style.content-row}">
 				<b:Column size="LG_12">
 					<g:VerticalPanel ui:field="panel"></g:VerticalPanel>

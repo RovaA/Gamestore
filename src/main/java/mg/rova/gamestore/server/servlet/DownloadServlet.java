@@ -13,6 +13,7 @@ public class DownloadServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unused")
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filename = request.getParameter("file");

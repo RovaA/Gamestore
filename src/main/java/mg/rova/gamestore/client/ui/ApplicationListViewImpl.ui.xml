@@ -10,6 +10,11 @@
 					<m:MaterialButton ui:field="addButton" text="Upload application..."></m:MaterialButton>
 				</b:Column>
 			</b:Row>
+			<b:Row>
+				<b:Column size="LG_12">
+					<g:VerticalPanel ui:field="panel"></g:VerticalPanel>
+				</b:Column>
+			</b:Row>
 		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 
