@@ -23,6 +23,8 @@ public interface ApplicationDetailsView extends IsWidget {
 
 		void addNewApplicationEditor(ApplicationEditor applicationEditor);
 
+		void onDeleteEditor(ApplicationEditor editor);
+
 		void onSubmit();
 
 		void onCancelling();

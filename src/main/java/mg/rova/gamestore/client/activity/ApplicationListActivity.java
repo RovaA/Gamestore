@@ -87,4 +87,10 @@ public class ApplicationListActivity extends AbstractActivity implements Applica
 		});
 	}
 
+	@Override
+	public void onStop() {
+		super.onStop();
+		view.clear();
+	}
+
 }

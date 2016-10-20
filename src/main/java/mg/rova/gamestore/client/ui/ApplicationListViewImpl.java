@@ -94,4 +94,9 @@ public class ApplicationListViewImpl extends Composite implements ApplicationLis
 		MaterialToast.fireToast(string);
 	}
 
+	@Override
+	public void clear() {
+		panel.clear();
+	}
+
 }

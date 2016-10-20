@@ -6,6 +6,8 @@ import mg.rova.gamestore.client.proxy.ApplicationProxy;
 
 public interface ApplicationListView extends IsWidget {
 
+	void clear();
+
 	void showToast(String string);
 
 	void addApplication(ApplicationProxy application);

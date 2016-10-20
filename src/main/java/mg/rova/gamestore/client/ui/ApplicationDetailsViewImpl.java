@@ -62,6 +62,7 @@ public class ApplicationDetailsViewImpl extends Composite implements Application
 	}
 
 	public void deleteEditor(ApplicationEditor editor) {
+		presenter.onDeleteEditor(editor);
 		container.remove(editor);
 		applicationsEditors.remove(editor);
 	}

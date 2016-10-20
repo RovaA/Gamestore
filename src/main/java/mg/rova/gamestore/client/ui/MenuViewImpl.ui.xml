@@ -17,7 +17,7 @@
 		<m:MaterialNavBar ui:field="navBarSearch" backgroundColor="red" width="100%" visible="false">
 			<m:MaterialSearch ui:field="searchText" placeholder="Search..." backgroundColor="white" iconColor="black" active="true" grid="l3" shadow="1" />
 		</m:MaterialNavBar>
-		<m:MaterialSideNav m:id="sidenav" closeOnClick="false" type="PUSH" alwaysShowActivator="true" showOnAttach="true" backgroundColor="grey lighten-4" top="68" shadow="0">
+		<m:MaterialSideNav m:id="sidenav" closeOnClick="false" type="PUSH" alwaysShowActivator="true" showOnAttach="false" backgroundColor="grey lighten-4" top="68" shadow="0">
 			<m:MaterialNavBrand>Menu</m:MaterialNavBrand>
 			<m:MaterialLink ui:field="homeMaterialLink" textColor="grey" text="Home" />
 			<m:MaterialLink ui:field="accountMaterialLink" textColor="grey" text="My Account" />

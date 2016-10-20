@@ -126,6 +126,11 @@ public class ApplicationDetailsActivity extends AbstractActivity implements Appl
 	}
 
 	@Override
+	public void onDeleteEditor(ApplicationEditor editor) {
+		drivers.remove(view.getEditors().indexOf(editor));
+	}
+
+	@Override
 	public void onCancelling() {
 		placeController.goTo(new ApplicationListPlace(""));
 	}
