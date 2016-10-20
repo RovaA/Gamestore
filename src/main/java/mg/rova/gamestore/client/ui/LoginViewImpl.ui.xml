@@ -10,19 +10,13 @@
 					<b:PageHeader text="Login" />
 				</b:Row>
 				<b:Row>
-					<b:Column size="LG_2">
-						<b:Label text="Username : "></b:Label>
-					</b:Column>
-					<b:Column size="LG_10">
-						<b:TextBox ui:field="usernameTextBox" placeholder="Username..."></b:TextBox>
+					<b:Column size="LG_12">
+						<m:MaterialTextBox ui:field="usernameTextBox" placeholder="Username"></m:MaterialTextBox>
 					</b:Column>
 				</b:Row>
 				<b:Row>
-					<b:Column size="LG_2">
-						<b:Label text="Password : "></b:Label>
-					</b:Column>
-					<b:Column size="LG_10">
-						<b:TextBox ui:field="passwordTextBox" placeholder="Password"></b:TextBox>
+					<b:Column size="LG_12">
+						<m:MaterialTextBox ui:field="passwordTextBox" placeholder="Password"></m:MaterialTextBox>
 					</b:Column>
 				</b:Row>
 				<b:Row>

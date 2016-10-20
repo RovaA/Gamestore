@@ -25,6 +25,8 @@ public interface ApplicationDetailsView extends IsWidget {
 
 		void onSubmit();
 
+		void onCancelling();
+
 	}
 
 }

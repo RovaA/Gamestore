@@ -11,6 +11,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.client.constants.IconPosition;
+import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCard;
 import gwt.material.design.client.ui.MaterialCardAction;
@@ -51,6 +53,17 @@ public class ApplicationListViewImpl extends Composite implements ApplicationLis
 		final MaterialCardContent content = new MaterialCardContent();
 		final MaterialCardTitle title = new MaterialCardTitle();
 		title.setText(application.getTitle());
+		title.setIconType(IconType.DELETE);
+		title.setIconPosition(IconPosition.RIGHT);
+		title.getIcon().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				presenter.remove(application);
+				panel.remove(materialCard);
+			}
+
+		});
 		content.add(title);
 		content.add(new MaterialLabel(application.getDescription()));
 		materialCard.add(content);

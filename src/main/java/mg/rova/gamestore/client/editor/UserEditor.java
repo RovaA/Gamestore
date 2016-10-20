@@ -1,7 +1,5 @@
 package mg.rova.gamestore.client.editor;
 
-import org.gwtbootstrap3.client.ui.TextBox;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -9,6 +7,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.client.ui.MaterialTextBox;
 import mg.rova.gamestore.client.proxy.UserProxy;
 
 public class UserEditor extends Composite implements Editor<UserProxy> {
@@ -19,13 +18,13 @@ public class UserEditor extends Composite implements Editor<UserProxy> {
 	}
 	
 	@UiField
-	TextBox name;
+	MaterialTextBox name;
 	@UiField
-	TextBox firstname;
+	MaterialTextBox firstname;
 	@UiField
-	TextBox username;
+	MaterialTextBox username;
 	@UiField
-	TextBox password;
+	MaterialTextBox password;
 	
 	public UserEditor() {
 		initWidget(uiBinder.createAndBindUi(this));

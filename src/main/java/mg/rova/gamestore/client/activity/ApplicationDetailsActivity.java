@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.requestfactory.shared.Receiver;
 
 import mg.rova.gamestore.client.editor.ApplicationEditor;
+import mg.rova.gamestore.client.place.ApplicationListPlace;
 import mg.rova.gamestore.client.place.LoginPlace;
 import mg.rova.gamestore.client.proxy.ApplicationProxy;
 import mg.rova.gamestore.client.proxy.UserProxy;
@@ -122,6 +123,11 @@ public class ApplicationDetailsActivity extends AbstractActivity implements Appl
 	@Override
 	public void addNewApplicationEditor(ApplicationEditor applicationEditor) {
 		newEditor(applicationEditor, currentUser);
+	}
+
+	@Override
+	public void onCancelling() {
+		placeController.goTo(new ApplicationListPlace(""));
 	}
 
 }

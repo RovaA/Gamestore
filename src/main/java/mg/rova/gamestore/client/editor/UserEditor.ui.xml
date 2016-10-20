@@ -7,48 +7,36 @@
 		<b:Container>
 			<b:Row>
 				<b:Row>
-					<b:PageHeader text="User Account"/>
+					<b:PageHeader text="User Account" />
 				</b:Row>
 				<b:Row>
-					<b:Column size="LG_2">
-						<b:Label text="Name"></b:Label>
-					</b:Column>
-					<b:Column size="LG_10">
-						<b:TextBox ui:field="name" placeholder="Name..."></b:TextBox>
+					<b:Column size="LG_12">
+						<m:MaterialTextBox ui:field="name" placeholder="Name"></m:MaterialTextBox>
 					</b:Column>
 				</b:Row>
 				<b:Row>
-					<b:Column size="LG_2">
-						<b:Label text="Firstname"></b:Label>
-					</b:Column>
-					<b:Column size="LG_10">
-						<b:TextBox ui:field="firstname" placeholder="Firstname..."></b:TextBox>
+					<b:Column size="LG_12">
+						<m:MaterialTextBox ui:field="firstname" placeholder="Firstname"></m:MaterialTextBox>
 					</b:Column>
 				</b:Row>
 				<b:Row>
-					<b:Column size="LG_2">
-						<b:Label text="Username"></b:Label>
-					</b:Column>
-					<b:Column size="LG_10">
-						<b:TextBox ui:field="username" placeholder="Username..."></b:TextBox>
+					<b:Column size="LG_12">
+						<m:MaterialTextBox ui:field="username" placeholder="Username"></m:MaterialTextBox>
 					</b:Column>
 				</b:Row>
 				<b:Row>
-					<b:Column size="LG_2">
-						<b:Label text="Password"></b:Label>
-					</b:Column>
-					<b:Column size="LG_10">
-						<b:TextBox ui:field="password" placeholder="Password..."></b:TextBox>
+					<b:Column size="LG_12">
+						<m:MaterialTextBox ui:field="password" placeholder="Password"></m:MaterialTextBox>
 					</b:Column>
 				</b:Row>
-<!-- 				<b:Row> -->
-<!-- 					<b:Column size="LG_2"> -->
-<!-- 						<b:Label text="Password confirmation"></b:Label> -->
-<!-- 					</b:Column> -->
-<!-- 					<b:Column size="LG_10"> -->
-<!-- 						<b:TextBox ui:field="passwordConfirm" placeholder="Password..."></b:TextBox> -->
-<!-- 					</b:Column> -->
-<!-- 				</b:Row> -->
+				<!-- <b:Row> -->
+				<!-- <b:Column size="LG_2"> -->
+				<!-- <b:Label text="Password confirmation"></b:Label> -->
+				<!-- </b:Column> -->
+				<!-- <b:Column size="LG_10"> -->
+				<!-- <b:TextBox ui:field="passwordConfirm" placeholder="Password..."></b:TextBox> -->
+				<!-- </b:Column> -->
+				<!-- </b:Row> -->
 			</b:Row>
 		</b:Container>
 	</g:HTMLPanel>

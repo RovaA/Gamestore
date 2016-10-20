@@ -19,7 +19,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
 
 	@Override
 	public Application create(Application application) {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		final Session session = getSession();
 		session.beginTransaction().begin();
 		session.persist(application);
 		session.flush();
@@ -29,7 +29,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
 
 	@Override
 	public Application findById(Long id) {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		final Session session = getSession();
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("id", id));
 		session.beginTransaction().commit();
@@ -39,7 +39,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Application> findAll() {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		final Session session = getSession();
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(Application.class);
 		session.beginTransaction().commit();
@@ -48,8 +48,8 @@ public class ApplicationDaoImpl implements ApplicationDao {
 
 	@Override
 	public boolean remove(Long id) {
-		EntityManager entityManager = GuiceFactory.getInstance(EntityManager.class);
-		Session session = entityManager.unwrap(Session.class);
+		EntityManager entityManager = getEntityManager();
+		final Session session = entityManager.unwrap(Session.class);
 		session.beginTransaction().begin();
 		entityManager.remove(session.get(Application.class, id));
 		session.flush();
@@ -60,11 +60,19 @@ public class ApplicationDaoImpl implements ApplicationDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Application> findByUserId(Long userId) {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		final Session session = getSession();
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("user.id", userId));
 		session.beginTransaction().commit();
 		return (List<Application>) criteria.list();
+	}
+	
+	protected EntityManager getEntityManager() {
+		return  GuiceFactory.getInstance(EntityManager.class);
+	}
+	
+	protected Session getSession() {
+		return getEntityManager().unwrap(Session.class);
 	}
 
 }

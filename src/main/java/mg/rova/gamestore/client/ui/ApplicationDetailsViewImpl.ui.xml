@@ -7,10 +7,11 @@
 		<b:Container>
 			<b:Row>
 				<g:VerticalPanel ui:field="container">
-					<g:HorizontalPanel>
+					<b:Row>
 						<m:MaterialButton ui:field="addButton" text="Add" backgroundColor="blue"></m:MaterialButton>
 						<m:MaterialButton ui:field="submitButton" text="Submit" backgroundColor="blue"></m:MaterialButton>
-					</g:HorizontalPanel>
+						<m:MaterialButton ui:field="cancelButton" text="Cancel" backgroundColor="red"></m:MaterialButton>
+					</b:Row>
 				</g:VerticalPanel>
 			</b:Row>
 		</b:Container>

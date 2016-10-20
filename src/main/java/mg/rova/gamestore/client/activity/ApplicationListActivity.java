@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.requestfactory.shared.Receiver;
 
 import mg.rova.gamestore.client.place.ApplicationDetailsPlace;
+import mg.rova.gamestore.client.place.LoginPlace;
 import mg.rova.gamestore.client.proxy.ApplicationProxy;
 import mg.rova.gamestore.client.request.AppRequestFactory;
 import mg.rova.gamestore.client.rpc.LoginServiceAsync;
@@ -43,6 +44,7 @@ public class ApplicationListActivity extends AbstractActivity implements Applica
 			public void onSuccess(Long result) {
 				if (result == null) {
 					view.showToast("Must logged first.");
+					placeController.goTo(new LoginPlace(""));
 					return;
 				}
 				requestFactory.getApplicationRequestContext().findByUserId(result).fire(new Receiver<List<ApplicationProxy>>() {
@@ -68,6 +70,21 @@ public class ApplicationListActivity extends AbstractActivity implements Applica
 	@Override
 	public void onAdd() {
 		placeController.goTo(new ApplicationDetailsPlace(""));
+	}
+
+	@Override
+	public void remove(ApplicationProxy application) {
+		final ApplicationProxy applicationEdited = requestFactory.getApplicationRequestContext().edit(application);
+		requestFactory.getApplicationRequestContext().remove(applicationEdited.getId()).fire(new Receiver<Boolean>() {
+
+			@Override
+			public void onSuccess(Boolean response) {
+				if (!response)
+					return;
+				view.showToast("Application deleted!");
+			}
+
+		});
 	}
 
 }

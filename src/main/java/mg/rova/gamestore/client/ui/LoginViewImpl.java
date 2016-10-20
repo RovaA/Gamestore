@@ -1,7 +1,5 @@
 package mg.rova.gamestore.client.ui;
 
-import org.gwtbootstrap3.client.ui.TextBox;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -11,6 +9,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialButton;
+import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
 
 public class LoginViewImpl extends Composite implements LoginView {
@@ -21,9 +20,9 @@ public class LoginViewImpl extends Composite implements LoginView {
 	}
 
 	@UiField
-	TextBox usernameTextBox;
+	MaterialTextBox usernameTextBox;
 	@UiField
-	TextBox passwordTextBox;
+	MaterialTextBox passwordTextBox;
 	@UiField
 	MaterialButton loginButton;
 	@UiField

@@ -29,6 +29,8 @@ public class ApplicationDetailsViewImpl extends Composite implements Application
 	MaterialButton addButton;
 	@UiField
 	MaterialButton submitButton;
+	@UiField
+	MaterialButton cancelButton;
 
 	protected Presenter presenter;
 	protected List<ApplicationEditor> applicationsEditors = new ArrayList<ApplicationEditor>();
@@ -52,6 +54,11 @@ public class ApplicationDetailsViewImpl extends Composite implements Application
 	@UiHandler("submitButton")
 	public void onSubmit(ClickEvent event) {
 		presenter.onSubmit();
+	}
+
+	@UiHandler("cancelButton")
+	public void onCancel(ClickEvent event) {
+		presenter.onCancelling();
 	}
 
 	public void deleteEditor(ApplicationEditor editor) {

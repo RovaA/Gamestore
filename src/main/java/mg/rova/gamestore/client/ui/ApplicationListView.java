@@ -16,6 +16,8 @@ public interface ApplicationListView extends IsWidget {
 
 		void onAdd();
 
+		void remove(ApplicationProxy application);
+
 	}
 
 }
