@@ -7,6 +7,7 @@ import com.google.inject.servlet.ServletModule;
 
 import mg.rova.gamestore.server.rpc.LoginServiceImpl;
 import mg.rova.gamestore.server.servlet.AppRequestFactoryServlet;
+import mg.rova.gamestore.server.servlet.DownloadServlet;
 import mg.rova.gamestore.server.servlet.FileUploadServlet;
 
 public class GuiceServletModule extends ServletModule {
@@ -27,6 +28,9 @@ public class GuiceServletModule extends ServletModule {
 
 		bind(FileUploadServlet.class).in(Singleton.class);
 		serve("/Gamestore/fileUpload").with(FileUploadServlet.class);
+
+		bind(DownloadServlet.class).in(Singleton.class);
+		serve("/Gamestore/download").with(DownloadServlet.class);
 
 		bind(LoginServiceImpl.class).in(Singleton.class);
 		serve("/Gamestore/login").with(LoginServiceImpl.class);
