@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import mg.rova.gamestore.server.domain.dao.ApplicationDao;
+import mg.rova.gamestore.server.guice.GuiceFactory;
+
 @Entity
 public class Application {
 
@@ -114,6 +117,6 @@ public class Application {
 	}
 
 	public static Application findApplication(Long id) {
-		return null;
+		return GuiceFactory.getInstance(ApplicationDao.class).findById(id);
 	}
 }

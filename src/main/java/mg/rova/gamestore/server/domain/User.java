@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import mg.rova.gamestore.server.domain.dao.UserDao;
+import mg.rova.gamestore.server.guice.GuiceFactory;
+
 @Entity
 public class User {
 
@@ -106,7 +109,7 @@ public class User {
 	}
 
 	public static User findUser(Long id) {
-		return null;
+		return GuiceFactory.getInstance(UserDao.class).findById(id);
 	}
 
 }

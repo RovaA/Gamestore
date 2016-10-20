@@ -12,6 +12,7 @@ import mg.rova.gamestore.client.mvp.ContentActivityMapper;
 import mg.rova.gamestore.client.mvp.MenuActivityMapper;
 import mg.rova.gamestore.client.request.AppRequestFactory;
 import mg.rova.gamestore.client.rpc.LoginServiceAsync;
+import mg.rova.gamestore.client.ui.AccountDetailsView;
 import mg.rova.gamestore.client.ui.AccountView;
 import mg.rova.gamestore.client.ui.ApplicationDetailsView;
 import mg.rova.gamestore.client.ui.ApplicationListView;
@@ -41,6 +42,8 @@ public interface AppComponent {
 	HomeView getHomeView();
 
 	AccountView getAccountView();
+
+	AccountDetailsView getAccountDetailsView();
 
 	LoginView getLoginView();
 

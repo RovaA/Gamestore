@@ -12,5 +12,7 @@ import mg.rova.gamestore.server.domain.locator.DAOServiceLocator;
 public interface ApplicationRequestContext extends RequestContext {
 
 	Request<ApplicationProxy> create(ApplicationProxy applicationProxy);
+	
+	Request<ApplicationProxy> findById(Long id);
 
 }

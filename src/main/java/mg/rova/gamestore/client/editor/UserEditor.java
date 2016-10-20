@@ -30,5 +30,12 @@ public class UserEditor extends Composite implements Editor<UserProxy> {
 	public UserEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
+	
+	public void setEnable(boolean enabled) {
+		name.setEnabled(enabled);
+		firstname.setEnabled(enabled);
+		username.setEnabled(enabled);
+		password.setEnabled(enabled);
+	}
 
 }

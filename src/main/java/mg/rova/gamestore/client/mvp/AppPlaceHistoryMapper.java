@@ -1,5 +1,6 @@
 package mg.rova.gamestore.client.mvp;
 
+import mg.rova.gamestore.client.place.AccountDetailsPlace;
 import mg.rova.gamestore.client.place.AccountPlace;
 import mg.rova.gamestore.client.place.ApplicationDetailsPlace;
 import mg.rova.gamestore.client.place.ApplicationListPlace;
@@ -13,6 +14,7 @@ import com.google.gwt.place.shared.WithTokenizers;
 @WithTokenizers({
 	HomePlace.Tokenizer.class,
 	AccountPlace.Tokenizer.class,
+	AccountDetailsPlace.Tokenizer.class,
 	CreateAccountPlace.Tokenizer.class,
 	LoginPlace.Tokenizer.class,
 	ApplicationListPlace.Tokenizer.class,

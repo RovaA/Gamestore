@@ -47,7 +47,7 @@ public class CreateAccountActivity extends AbstractActivity implements CreateAcc
 		userProxy.setUsername("");
 		userProxy.setPassword("");
 		driver.edit(userProxy, requestContext);
-		requestContext.create(userProxy).to(new Receiver<UserProxy>() {
+		requestContext.persist(userProxy).to(new Receiver<UserProxy>() {
 
 			@Override
 			public void onSuccess(UserProxy response) {

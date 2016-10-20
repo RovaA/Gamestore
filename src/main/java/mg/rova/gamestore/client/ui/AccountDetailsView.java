@@ -6,7 +6,7 @@ import com.google.web.bindery.requestfactory.gwt.client.RequestFactoryEditorDriv
 import mg.rova.gamestore.client.editor.UserEditor;
 import mg.rova.gamestore.client.proxy.UserProxy;
 
-public interface AccountView extends IsWidget {
+public interface AccountDetailsView extends IsWidget {
 
 	UserEditor getEditor();
 
@@ -19,6 +19,9 @@ public interface AccountView extends IsWidget {
 
 	public interface Presenter {
 
-		void onEdit();
+		void onSave();
+
+		void onCancelling();
+
 	}
 }

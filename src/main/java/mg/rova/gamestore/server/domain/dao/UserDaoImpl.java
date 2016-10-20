@@ -12,7 +12,7 @@ import mg.rova.gamestore.server.guice.GuiceFactory;
 public class UserDaoImpl implements UserDao {
 
 	@Override
-	public User create(User user) {
+	public User persist(User user) {
 		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
 		session.beginTransaction().begin();
 		session.persist(user);

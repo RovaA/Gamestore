@@ -11,7 +11,7 @@ import mg.rova.gamestore.server.domain.locator.DAOServiceLocator;
 @Service(value = UserDao.class, locator = DAOServiceLocator.class)
 public interface UserRequestContext extends RequestContext {
 	
-	Request<UserProxy> create(UserProxy userProxy);
+	Request<UserProxy> persist(UserProxy userProxy);
 	
 	Request<UserProxy> findById(Long id);
 

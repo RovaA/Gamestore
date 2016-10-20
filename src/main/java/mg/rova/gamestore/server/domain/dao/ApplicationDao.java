@@ -6,4 +6,6 @@ public interface ApplicationDao {
 	
 	public Application create(Application application);
 	
+	public Application findById(Long id);
+	
 }

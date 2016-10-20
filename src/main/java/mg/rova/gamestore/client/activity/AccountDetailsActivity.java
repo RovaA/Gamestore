@@ -10,24 +10,28 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.requestfactory.shared.Receiver;
 
-import mg.rova.gamestore.client.place.AccountDetailsPlace;
+import mg.rova.gamestore.client.place.AccountPlace;
 import mg.rova.gamestore.client.place.LoginPlace;
 import mg.rova.gamestore.client.proxy.UserProxy;
 import mg.rova.gamestore.client.request.AppRequestFactory;
+import mg.rova.gamestore.client.request.UserRequestContext;
 import mg.rova.gamestore.client.rpc.LoginServiceAsync;
-import mg.rova.gamestore.client.ui.AccountView;
+import mg.rova.gamestore.client.ui.AccountDetailsView;
 import mg.rova.gamestore.client.ui.AccountView.Driver;
 
-public class AccountActivity extends AbstractActivity implements AccountView.Presenter {
+public class AccountDetailsActivity extends AbstractActivity implements AccountDetailsView.Presenter {
 
-	protected AccountView view;
+	protected AccountDetailsView view;
 	protected PlaceController placeController;
 	protected AppRequestFactory requestFactory;
+	protected UserRequestContext requestContext;
+	protected UserProxy user;
+	protected UserProxy editedUser;
 	protected LoginServiceAsync loginService;
 	protected Driver driver;
 
 	@Inject
-	public AccountActivity(AccountView view, PlaceController placeController, AppRequestFactory requestFactory, LoginServiceAsync loginService) {
+	public AccountDetailsActivity(AccountDetailsView view, PlaceController placeController, AppRequestFactory requestFactory, LoginServiceAsync loginService) {
 		this.view = view;
 		this.placeController = placeController;
 		this.requestFactory = requestFactory;
@@ -51,15 +55,24 @@ public class AccountActivity extends AbstractActivity implements AccountView.Pre
 				requestFactory.getUserRequestContext().findById(result).fire(new Receiver<UserProxy>() {
 
 					@Override
-					public void onSuccess(UserProxy user) {
-						if (user == null)
+					public void onSuccess(UserProxy resultUser) {
+						if (resultUser == null)
 							return;
-						final Driver driver = GWT.create(Driver.class);
-						view.getEditor().setEnable(false);
+						user = resultUser;
+						
+						driver = GWT.create(Driver.class);
 						driver.initialize(view.getEditor());
-						driver.display(user);
-					}
+						requestContext = requestFactory.getUserRequestContext();
+						editedUser = requestContext.edit(user);
+						driver.edit(editedUser, requestContext);
+						requestContext.persist(editedUser).to(new Receiver<UserProxy>() {
 
+							@Override
+							public void onSuccess(UserProxy response) {
+
+							}
+						});
+					}
 				});
 			}
 
@@ -72,8 +85,18 @@ public class AccountActivity extends AbstractActivity implements AccountView.Pre
 	}
 
 	@Override
-	public void onEdit() {
-		placeController.goTo(new AccountDetailsPlace(""));
+	public void onSave() {
+		if (!driver.isDirty()) {
+			view.showToast("Must assign new value.");
+			return;
+		}
+		driver.flush().fire();
+		placeController.goTo(new AccountPlace(""));
+	}
+
+	@Override
+	public void onCancelling() {
+		placeController.goTo(new AccountPlace(""));
 	}
 
 }

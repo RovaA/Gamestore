@@ -12,27 +12,34 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialToast;
 import mg.rova.gamestore.client.editor.UserEditor;
 
-public class AccountViewImpl extends Composite implements AccountView {
+public class AccountDetailsViewImpl extends Composite implements AccountDetailsView {
 
-	private static AccountViewImplUiBinder uiBinder = GWT.create(AccountViewImplUiBinder.class);
+	private static AccountDetailsViewImplUiBinder uiBinder = GWT.create(AccountDetailsViewImplUiBinder.class);
 
-	interface AccountViewImplUiBinder extends UiBinder<Widget, AccountViewImpl> {
+	interface AccountDetailsViewImplUiBinder extends UiBinder<Widget, AccountDetailsViewImpl> {
 	}
 
 	@UiField
 	UserEditor userEditor;
 	@UiField
-	MaterialButton editButton;
+	MaterialButton saveButton;
+	@UiField
+	MaterialButton cancelButton;
 
 	protected Presenter presenter;
 
-	public AccountViewImpl() {
+	public AccountDetailsViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@UiHandler("editButton")
-	void onEdit(ClickEvent e) {
-		presenter.onEdit();
+	@UiHandler("saveButton")
+	void onSave(ClickEvent e) {
+		presenter.onSave();
+	}
+
+	@UiHandler("cancelButton")
+	void onCancel(ClickEvent e) {
+		presenter.onCancelling();
 	}
 
 	@Override
@@ -41,13 +48,13 @@ public class AccountViewImpl extends Composite implements AccountView {
 	}
 
 	@Override
-	public void setPresenter(Presenter presenter) {
-		this.presenter = presenter;
+	public void showToast(String string) {
+		MaterialToast.fireToast(string);
 	}
 
 	@Override
-	public void showToast(String string) {
-		MaterialToast.fireToast(string);
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
 	}
 
 }
