@@ -20,6 +20,7 @@ import mg.rova.gamestore.client.proxy.ApplicationProxy;
 import mg.rova.gamestore.client.proxy.UserProxy;
 import mg.rova.gamestore.client.request.AppRequestFactory;
 import mg.rova.gamestore.client.request.ApplicationRequestContext;
+import mg.rova.gamestore.client.request.UserRequestContext;
 import mg.rova.gamestore.client.rpc.LoginServiceAsync;
 import mg.rova.gamestore.client.ui.ApplicationDetailsView;
 import mg.rova.gamestore.client.ui.ApplicationDetailsView.Driver;
@@ -85,7 +86,8 @@ public class ApplicationDetailsActivity extends AbstractActivity implements Appl
 		applicationProxy.setDate(new Date());
 		applicationProxy.setPath("");
 		applicationProxy.setDescription("");
-		applicationProxy.setUser(user);
+		final UserRequestContext userRequestContext = requestFactory.getUserRequestContext();
+		applicationProxy.setUser(userRequestContext.edit(user));
 		driver.edit(applicationProxy, requestContext);
 		requestContext.create(applicationProxy).to(new Receiver<ApplicationProxy>() {
 
