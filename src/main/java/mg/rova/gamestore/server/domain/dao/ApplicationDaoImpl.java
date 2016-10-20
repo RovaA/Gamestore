@@ -1,5 +1,7 @@
 package mg.rova.gamestore.server.domain.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
@@ -32,6 +34,37 @@ public class ApplicationDaoImpl implements ApplicationDao {
 		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("id", id));
 		session.beginTransaction().commit();
 		return (Application) criteria.list().get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Application> findAll() {
+		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		session.beginTransaction().begin();
+		Criteria criteria = session.createCriteria(Application.class);
+		session.beginTransaction().commit();
+		return (List<Application>) criteria.list();
+	}
+
+	@Override
+	public boolean remove(Long id) {
+		EntityManager entityManager = GuiceFactory.getInstance(EntityManager.class);
+		Session session = entityManager.unwrap(Session.class);
+		session.beginTransaction().begin();
+		entityManager.remove(session.get(Application.class, id));
+		session.flush();
+		session.beginTransaction().commit();
+		return true;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Application> findByUserId(Long userId) {
+		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		session.beginTransaction().begin();
+		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("user.id", userId));
+		session.beginTransaction().commit();
+		return (List<Application>) criteria.list();
 	}
 
 }

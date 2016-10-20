@@ -1,5 +1,7 @@
 package mg.rova.gamestore.server.domain.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
@@ -37,6 +39,27 @@ public class UserDaoImpl implements UserDao {
 		Criteria criteria = session.createCriteria(User.class).add(Restrictions.like("id", id));
 		session.beginTransaction().commit();
 		return (User) criteria.list().get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findAll() {
+		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		session.beginTransaction().begin();
+		Criteria criteria = session.createCriteria(User.class);
+		session.beginTransaction().commit();
+		return (List<User>) criteria.list();
+	}
+
+	@Override
+	public boolean remove(Long id) {
+		EntityManager entityManager = GuiceFactory.getInstance(EntityManager.class);
+		Session session = entityManager.unwrap(Session.class);
+		session.beginTransaction().begin();
+		entityManager.remove(session.get(User.class, id));
+		session.flush();
+		session.beginTransaction().commit();
+		return true;
 	}
 
 }
