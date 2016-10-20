@@ -1,5 +1,7 @@
 package mg.rova.gamestore.client.request;
 
+import java.util.List;
+
 import com.google.web.bindery.requestfactory.shared.Request;
 import com.google.web.bindery.requestfactory.shared.RequestContext;
 import com.google.web.bindery.requestfactory.shared.Service;
@@ -12,7 +14,13 @@ import mg.rova.gamestore.server.domain.locator.DAOServiceLocator;
 public interface ApplicationRequestContext extends RequestContext {
 
 	Request<ApplicationProxy> create(ApplicationProxy applicationProxy);
-	
+
 	Request<ApplicationProxy> findById(Long id);
+
+	Request<List<ApplicationProxy>> findByUserId(Long userId);
+
+	Request<List<ApplicationProxy>> findAll();
+
+	Request<Boolean> remove(Long id);
 
 }

@@ -1,23 +1,19 @@
 package mg.rova.gamestore.client.ui;
 
-import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.safehtml.client.SafeHtmlTemplates;
-import com.google.gwt.safehtml.shared.SafeHtml;
-import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.view.client.HasData;
 
 import gwt.material.design.client.ui.MaterialCard;
+import gwt.material.design.client.ui.MaterialCardAction;
 import gwt.material.design.client.ui.MaterialCardContent;
+import gwt.material.design.client.ui.MaterialCardTitle;
 import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialLink;
+import mg.rova.gamestore.client.proxy.ApplicationProxy;
 
 public class HomeViewImpl extends Composite implements HomeView {
 
@@ -26,54 +22,17 @@ public class HomeViewImpl extends Composite implements HomeView {
 	interface HomeViewImplUiBinder extends UiBinder<Widget, HomeViewImpl> {
 	}
 
-	interface Templates extends SafeHtmlTemplates {
-
-		@SafeHtmlTemplates.Template("<div><h3>{0}</h3><br/><span>{1}</span></div>")
-		SafeHtml cell(SafeHtml title, SafeHtml subtitle);
-	}
-
-	@UiField(provided = true)
-	protected CellTable<String> cellTable = new CellTable<String>();
 	@UiField
-	protected SimplePanel panel;
+	protected VerticalPanel panel;
 
 	protected Presenter presenter;
 
 	public HomeViewImpl() {
-		cellTable.addColumn(new Column<String, String>(new ApplicationCell()) {
-
-			@Override
-			public String getValue(String arg0) {
-				return arg0;
-			}
-
-		});
-		cellTable.setWidth("100%");
 		initWidget(uiBinder.createAndBindUi(this));
-		MaterialCard materialCard = new MaterialCard();
-		MaterialCardContent content = new MaterialCardContent();
-		content.add(new MaterialLabel("Its a test"));
-		materialCard.add(content);
-		panel.add(materialCard);
 	}
 
-	static class ApplicationCell extends AbstractCell<String> {
-
-		private static Templates templates = GWT.create(Templates.class);
-
-		@Override
-		public void render(Context context, String value, SafeHtmlBuilder sb) {
-
-			if (value == null) {
-				return;
-			}
-
-			SafeHtml safeValueTitle = SafeHtmlUtils.fromString(value);
-			SafeHtml safeValueSubtitle = SafeHtmlUtils.fromString("Subtitle");
-			
-			SafeHtml rendered = templates.cell(safeValueTitle, safeValueSubtitle);
-			sb.append(rendered);
-		}
+	public VerticalPanel getPanel() {
+		return panel;
 	}
 
 	@Override
@@ -82,7 +41,22 @@ public class HomeViewImpl extends Composite implements HomeView {
 	}
 
 	@Override
-	public HasData<String> getHasData() {
-		return cellTable;
+	public void addApplication(ApplicationProxy application) {
+		final MaterialCard materialCard = new MaterialCard();
+
+		final MaterialCardContent content = new MaterialCardContent();
+		final MaterialCardTitle title = new MaterialCardTitle();
+		title.setText(application.getTitle());
+		content.add(title);
+		content.add(new MaterialLabel(application.getDescription()));
+		materialCard.add(content);
+
+		final MaterialCardAction action = new MaterialCardAction();
+		final MaterialLink downloadLink = new MaterialLink();
+		downloadLink.setText("Download");
+		action.add(downloadLink);
+		materialCard.add(action);
+		panel.add(materialCard);
 	}
+
 }
