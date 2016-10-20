@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.requestfactory.shared.Receiver;
 
 import mg.rova.gamestore.client.editor.ApplicationEditor;
+import mg.rova.gamestore.client.place.LoginPlace;
 import mg.rova.gamestore.client.proxy.ApplicationProxy;
 import mg.rova.gamestore.client.proxy.UserProxy;
 import mg.rova.gamestore.client.request.AppRequestFactory;
@@ -30,6 +31,7 @@ public class ApplicationDetailsActivity extends AbstractActivity implements Appl
 	protected List<Driver> drivers = new ArrayList<Driver>();
 	protected AppRequestFactory requestFactory;
 	protected LoginServiceAsync loginService;
+	protected UserProxy currentUser;
 
 	@Inject
 	public ApplicationDetailsActivity(ApplicationDetailsView view, PlaceController placeController, AppRequestFactory requestFactory, LoginServiceAsync loginService) {
@@ -50,33 +52,16 @@ public class ApplicationDetailsActivity extends AbstractActivity implements Appl
 			public void onSuccess(Long result) {
 				if (result == null) {
 					view.showToast("Must be logged first");
+					placeController.goTo(new LoginPlace(""));
 					return;
 				}
 				requestFactory.getUserRequestContext().findById(result).fire(new Receiver<UserProxy>() {
 
 					@Override
 					public void onSuccess(UserProxy user) {
+						currentUser = user;
 						for (ApplicationEditor editor : view.getEditors()) {
-							Driver driver = GWT.create(Driver.class);
-							driver.initialize(editor);
-							final ApplicationRequestContext requestContext = requestFactory.getApplicationRequestContext();
-							final ApplicationProxy applicationProxy = requestContext.create(ApplicationProxy.class);
-							applicationProxy.setTitle("");
-							applicationProxy.setKeyword("");
-							applicationProxy.setAuthor("");
-							applicationProxy.setDate(new Date());
-							applicationProxy.setPath("");
-							applicationProxy.setDescription("");
-							applicationProxy.setUser(user);
-							driver.edit(applicationProxy, requestContext);
-							requestContext.create(applicationProxy).to(new Receiver<ApplicationProxy>() {
-
-								@Override
-								public void onSuccess(ApplicationProxy response) {
-
-								}
-							});
-							drivers.add(driver);
+							newEditor(editor, user);
 						}
 					}
 				});
@@ -84,20 +69,57 @@ public class ApplicationDetailsActivity extends AbstractActivity implements Appl
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
 
 			}
 		});
 	}
 
+	public void newEditor(ApplicationEditor editor, UserProxy user) {
+		Driver driver = GWT.create(Driver.class);
+		driver.initialize(editor);
+		final ApplicationRequestContext requestContext = requestFactory.getApplicationRequestContext();
+		final ApplicationProxy applicationProxy = requestContext.create(ApplicationProxy.class);
+		applicationProxy.setTitle("");
+		applicationProxy.setKeyword("");
+		applicationProxy.setAuthor("");
+		applicationProxy.setDate(new Date());
+		applicationProxy.setPath("");
+		applicationProxy.setDescription("");
+		applicationProxy.setUser(user);
+		driver.edit(applicationProxy, requestContext);
+		requestContext.create(applicationProxy).to(new Receiver<ApplicationProxy>() {
+
+			@Override
+			public void onSuccess(ApplicationProxy response) {
+
+			}
+		});
+		drivers.add(driver);
+	}
+
 	@Override
 	public void onSubmit() {
-
+		boolean isDirty = true;
+		if (drivers.isEmpty()) {
+			return;
+		}
+		for (Driver driver : drivers) {
+			if (!driver.isDirty()) {
+				isDirty = false;
+				view.showToast("Must assign value to form.");
+				break;
+			}
+		}
+		if (isDirty) {
+			for (Driver driver : drivers) {
+				driver.flush().fire();
+			}
+		}
 	}
 
 	@Override
 	public void addNewApplicationEditor(ApplicationEditor applicationEditor) {
-
+		newEditor(applicationEditor, currentUser);
 	}
 
 }
