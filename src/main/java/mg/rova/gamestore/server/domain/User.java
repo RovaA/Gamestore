@@ -3,6 +3,7 @@ package mg.rova.gamestore.server.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class User {
 
 	private String password;
 
-	@OneToMany(targetEntity=Application.class, mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(targetEntity = Application.class, cascade = { CascadeType.ALL }, mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Application> applications = new ArrayList<Application>();
 
 	public User() {
@@ -103,7 +104,7 @@ public class User {
 			return;
 		applications.remove(application);
 	}
-	
+
 	public static User findUser(Long id) {
 		return null;
 	}

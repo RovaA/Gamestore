@@ -16,6 +16,10 @@ import mg.rova.gamestore.client.rpc.LoginService;
 import mg.rova.gamestore.client.rpc.LoginServiceAsync;
 import mg.rova.gamestore.client.ui.AccountView;
 import mg.rova.gamestore.client.ui.AccountViewImpl;
+import mg.rova.gamestore.client.ui.ApplicationDetailsView;
+import mg.rova.gamestore.client.ui.ApplicationDetailsViewImpl;
+import mg.rova.gamestore.client.ui.ApplicationListView;
+import mg.rova.gamestore.client.ui.ApplicationListViewImpl;
 import mg.rova.gamestore.client.ui.CreateAccountView;
 import mg.rova.gamestore.client.ui.CreateAccountViewImpl;
 import mg.rova.gamestore.client.ui.HomeView;
@@ -91,6 +95,16 @@ public class AppModule {
 	@Provides
 	public static CreateAccountView provideCreateAccountView() {
 		return new CreateAccountViewImpl();
+	}
+
+	@Provides
+	public static ApplicationListView provideApplicationListView() {
+		return new ApplicationListViewImpl();
+	}
+
+	@Provides
+	public static ApplicationDetailsView provideApplicationDetailsView() {
+		return new ApplicationDetailsViewImpl();
 	}
 
 }

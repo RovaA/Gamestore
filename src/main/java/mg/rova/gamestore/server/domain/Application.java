@@ -31,7 +31,7 @@ public class Application {
 
 	private String description;
 
-	@ManyToOne(targetEntity=User.class)
+	@ManyToOne(targetEntity = User.class)
 	private User user;
 
 	public Application() {
@@ -107,7 +107,10 @@ public class Application {
 	}
 
 	public void setUser(User user) {
+		if (user == null)
+			return;
 		this.user = user;
+		user.addApplication(this);
 	}
 
 	public static Application findApplication(Long id) {

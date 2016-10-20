@@ -10,25 +10,25 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialButton;
 
-public class AccountViewImpl extends Composite implements AccountView {
+public class ApplicationListViewImpl extends Composite implements ApplicationListView {
 
-	private static AccountViewImplUiBinder uiBinder = GWT.create(AccountViewImplUiBinder.class);
+	private static ApplicationListViewImplUiBinder uiBinder = GWT.create(ApplicationListViewImplUiBinder.class);
 
-	interface AccountViewImplUiBinder extends UiBinder<Widget, AccountViewImpl> {
+	interface ApplicationListViewImplUiBinder extends UiBinder<Widget, ApplicationListViewImpl> {
 	}
-
-	@UiField
-	MaterialButton editButton;
 	
+	@UiField
+	MaterialButton addButton;
+
 	protected Presenter presenter;
 
-	public AccountViewImpl() {
+	public ApplicationListViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
-	@UiHandler("editButton")
-	void onClick(ClickEvent e) {
-		presenter.onEdit();
+	
+	@UiHandler("addButton")
+	public void onAdd(ClickEvent event) {
+		presenter.onAdd();
 	}
 
 	@Override

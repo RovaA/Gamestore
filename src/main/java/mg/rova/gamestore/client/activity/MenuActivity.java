@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import mg.rova.gamestore.client.event.LoginEvent;
 import mg.rova.gamestore.client.event.LoginEventHandler;
 import mg.rova.gamestore.client.place.AccountPlace;
+import mg.rova.gamestore.client.place.ApplicationListPlace;
 import mg.rova.gamestore.client.place.CreateAccountPlace;
 import mg.rova.gamestore.client.place.HomePlace;
 import mg.rova.gamestore.client.place.LoginPlace;
@@ -89,6 +90,28 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 	}
 
 	@Override
+	public void onApplication() {
+		loginService.isLoggedIn(new AsyncCallback<Boolean>() {
+
+			@Override
+			public void onSuccess(Boolean result) {
+				if (!result) {
+					view.showToast("You must be logged first");
+					return;
+				}
+				if (placeController.getWhere() instanceof AccountPlace)
+					return;
+				placeController.goTo(new ApplicationListPlace(""));
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+
+			}
+		});
+	}
+
+	@Override
 	public void onCreate() {
 		placeController.goTo(new CreateAccountPlace(""));
 	}
@@ -132,4 +155,5 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 			}
 		});
 	}
+
 }

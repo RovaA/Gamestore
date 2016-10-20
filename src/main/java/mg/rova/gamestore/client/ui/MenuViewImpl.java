@@ -35,6 +35,8 @@ public class MenuViewImpl extends Composite implements MenuView {
 	@UiField
 	protected MaterialLink accountMaterialLink;
 	@UiField
+	protected MaterialLink applicationMaterialLink;
+	@UiField
 	protected MaterialAnchorButton logButton;
 	@UiField
 	protected MaterialAnchorButton createButton;
@@ -76,6 +78,11 @@ public class MenuViewImpl extends Composite implements MenuView {
 	@UiHandler("accountMaterialLink")
 	public void onAccount(ClickEvent event) {
 		presenter.onAccount();
+	}
+
+	@UiHandler("applicationMaterialLink")
+	public void onApplication(ClickEvent event) {
+		presenter.onApplication();
 	}
 
 	@UiHandler("createButton")

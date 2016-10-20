@@ -24,7 +24,7 @@ public class AccountActivity extends AbstractActivity implements AccountView.Pre
 	}
 
 	@Override
-	public void onSubmit() {
+	public void onEdit() {
 
 	}
 

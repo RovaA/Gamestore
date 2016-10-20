@@ -16,6 +16,8 @@ public interface MenuView extends IsWidget {
 
 		void onAccount();
 
+		void onApplication();
+
 		void onCreate();
 
 		void onLogin();
