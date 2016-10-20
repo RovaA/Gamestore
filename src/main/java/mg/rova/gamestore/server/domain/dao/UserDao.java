@@ -8,4 +8,6 @@ public interface UserDao {
 
 	public User authenticate(String username, String password);
 	
+	public User findById(Long id);
+	
 }

@@ -9,5 +9,7 @@ public interface LoginServiceAsync {
 	void isLoggedIn(AsyncCallback<Boolean> asyncCallback);
 	
 	void logout(AsyncCallback<Boolean> asyncCallback);
+
+	void getId(AsyncCallback<Long> callback);
 	
 }

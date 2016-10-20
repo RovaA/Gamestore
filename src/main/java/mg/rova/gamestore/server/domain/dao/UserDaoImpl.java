@@ -30,4 +30,13 @@ public class UserDaoImpl implements UserDao {
 		return (User) criteria.list().get(0);
 	}
 
+	@Override
+	public User findById(Long id) {
+		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		session.beginTransaction().begin();
+		Criteria criteria = session.createCriteria(User.class).add(Restrictions.like("id", id));
+		session.beginTransaction().commit();
+		return (User) criteria.list().get(0);
+	}
+
 }

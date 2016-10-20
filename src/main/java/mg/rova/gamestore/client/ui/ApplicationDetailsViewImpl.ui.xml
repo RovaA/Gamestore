@@ -4,5 +4,15 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
+		<b:Container>
+			<b:Row>
+				<g:VerticalPanel ui:field="container">
+					<g:HorizontalPanel>
+						<m:MaterialButton ui:field="addButton" text="Add" backgroundColor="blue"></m:MaterialButton>
+						<m:MaterialButton ui:field="submitButton" text="Submit" backgroundColor="blue"></m:MaterialButton>
+					</g:HorizontalPanel>
+				</g:VerticalPanel>
+			</b:Row>
+		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -59,4 +59,11 @@ public class LoginRealm {
 		SecurityUtils.getSubject().logout();
 		return true;
 	}
+
+	public static Long getId(HttpSession session) {
+		if (!isLoggedIn(session))
+			return null;
+		return (Long) session.getAttribute("identifiant");
+	}
+
 }

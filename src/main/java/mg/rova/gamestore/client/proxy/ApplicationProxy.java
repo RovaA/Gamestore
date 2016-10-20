@@ -36,4 +36,8 @@ public interface ApplicationProxy extends EntityProxy {
 
 	void setDescription(String description);
 	
+	UserProxy getUser();
+
+	void setUser(UserProxy user);
+	
 }

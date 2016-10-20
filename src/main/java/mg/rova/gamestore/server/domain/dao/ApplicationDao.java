@@ -1,5 +1,9 @@
 package mg.rova.gamestore.server.domain.dao;
 
-public interface ApplicationDao {
+import mg.rova.gamestore.server.domain.Application;
 
+public interface ApplicationDao {
+	
+	public Application create(Application application);
+	
 }

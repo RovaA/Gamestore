@@ -15,7 +15,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 		HttpServletRequest req = getThreadLocalRequest();
 		return req.getSession();
 	}
-	
+
 	public Boolean login(String login, String pwd) {
 		return LoginRealm.login(login, pwd, httpSession());
 	}
@@ -26,5 +26,9 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 
 	public Boolean logout() {
 		return LoginRealm.logout(httpSession());
+	}
+
+	public Long getId() {
+		return LoginRealm.getId(httpSession());
 	}
 }

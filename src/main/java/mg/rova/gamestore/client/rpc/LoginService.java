@@ -11,5 +11,7 @@ public interface LoginService extends RemoteService {
 	Boolean isLoggedIn();
 	
 	Boolean logout();
+	
+	Long getId();
 
 }

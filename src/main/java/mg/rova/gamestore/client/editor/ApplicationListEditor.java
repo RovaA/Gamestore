@@ -23,17 +23,17 @@ public class ApplicationListEditor extends Composite implements IsEditor<ListEdi
 
 	interface ApplicationListEditorUiBinder extends UiBinder<Widget, ApplicationListEditor> {
 	}
-	
+
 	public interface Presenter {
-		
+
 		ApplicationProxy newApplicationProxy();
-		
+
 	}
 
 	private class ApplicationEditorSource extends EditorSource<ApplicationEditor> {
 		@Override
 		public ApplicationEditor create(final int index) {
-			ApplicationEditor subEditor = new ApplicationEditor();
+			ApplicationEditor subEditor = new ApplicationEditor(null);
 			googleEmails.insert(subEditor, index);
 			return subEditor;
 		}
