@@ -23,6 +23,8 @@ public class AccountViewImpl extends Composite implements AccountView {
 	UserEditor userEditor;
 	@UiField
 	MaterialButton editButton;
+	@UiField
+	MaterialButton deleteButton;
 
 	protected Presenter presenter;
 
@@ -33,6 +35,11 @@ public class AccountViewImpl extends Composite implements AccountView {
 	@UiHandler("editButton")
 	void onEdit(ClickEvent e) {
 		presenter.onEdit();
+	}
+
+	@UiHandler("deleteButton")
+	void onCancel(ClickEvent e) {
+		presenter.onCancelling();
 	}
 
 	@Override

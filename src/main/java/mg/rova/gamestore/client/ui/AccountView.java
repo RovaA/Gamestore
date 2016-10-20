@@ -20,5 +20,7 @@ public interface AccountView extends IsWidget {
 	public interface Presenter {
 
 		void onEdit();
+
+		void onCancelling();
 	}
 }

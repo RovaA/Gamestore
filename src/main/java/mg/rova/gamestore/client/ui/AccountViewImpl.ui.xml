@@ -10,7 +10,10 @@
 		<b:Container>
 			<b:Row>
 				<b:Column size="LG_12">
-					<m:MaterialButton ui:field="editButton" text="Edit profile"></m:MaterialButton>
+					<b:Row>
+						<m:MaterialButton ui:field="editButton" text="Edit profile"></m:MaterialButton>
+						<m:MaterialButton ui:field="deleteButton" text="Delete profile"></m:MaterialButton>
+					</b:Row>
 				</b:Column>
 			</b:Row>
 		</b:Container>
