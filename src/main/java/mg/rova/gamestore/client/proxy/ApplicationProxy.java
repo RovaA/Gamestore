@@ -6,6 +6,7 @@ import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 
 import mg.rova.gamestore.server.domain.Application;
+import mg.rova.gamestore.shared.Category;
 
 @ProxyFor(Application.class)
 public interface ApplicationProxy extends EntityProxy {
@@ -35,6 +36,10 @@ public interface ApplicationProxy extends EntityProxy {
 	String getDescription();
 
 	void setDescription(String description);
+	
+	Category getCategory();
+
+	void setCategory(Category category);
 	
 	UserProxy getUser();
 

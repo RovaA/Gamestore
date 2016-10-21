@@ -2,15 +2,20 @@ package mg.rova.gamestore.server.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 
 import mg.rova.gamestore.server.domain.dao.ApplicationDao;
 import mg.rova.gamestore.server.guice.GuiceFactory;
+import mg.rova.gamestore.shared.Category;
 
 @Entity
 public class Application {
@@ -33,6 +38,11 @@ public class Application {
 	private String path;
 
 	private String description;
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, columnDefinition = "varchar(20)")
+	private Category category;
 
 	@ManyToOne(targetEntity = User.class)
 	private User user;
@@ -103,6 +113,14 @@ public class Application {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public User getUser() {

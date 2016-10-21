@@ -1,8 +1,5 @@
 package mg.rova.gamestore.client.editor;
 
-import org.gwtbootstrap3.client.ui.TextArea;
-import org.gwtbootstrap3.client.ui.TextBox;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -13,6 +10,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialButton;
+import gwt.material.design.client.ui.MaterialTextArea;
+import gwt.material.design.client.ui.MaterialTextBox;
 import mg.rova.gamestore.client.proxy.ApplicationProxy;
 import mg.rova.gamestore.client.ui.ApplicationDetailsViewImpl;
 
@@ -24,15 +23,17 @@ public class ApplicationEditor extends Composite implements Editor<ApplicationPr
 	}
 
 	@UiField
-	TextBox title;
+	MaterialTextBox title;
 	@UiField
-	TextBox keyword;
+	MaterialTextBox keyword;
 	@UiField
-	TextBox author;
+	MaterialTextBox author;
 	@UiField
 	ApplicationPathEditor path;
 	@UiField
-	TextArea description;
+	MaterialTextArea description;
+	@UiField
+	CategoryDropdownEditor category;
 
 	@UiField
 	@Ignore

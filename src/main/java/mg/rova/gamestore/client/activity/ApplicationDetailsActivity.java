@@ -25,6 +25,7 @@ import mg.rova.gamestore.client.request.UserRequestContext;
 import mg.rova.gamestore.client.rpc.LoginServiceAsync;
 import mg.rova.gamestore.client.ui.ApplicationDetailsView;
 import mg.rova.gamestore.client.ui.ApplicationDetailsView.Driver;
+import mg.rova.gamestore.shared.Category;
 
 public class ApplicationDetailsActivity extends AbstractActivity implements ApplicationDetailsView.Presenter {
 
@@ -87,6 +88,7 @@ public class ApplicationDetailsActivity extends AbstractActivity implements Appl
 		applicationProxy.setDate(new Date());
 		applicationProxy.setPath("");
 		applicationProxy.setDescription("");
+		applicationProxy.setCategory(Category.values()[0]);
 		final UserRequestContext userRequestContext = requestFactory.getUserRequestContext();
 		applicationProxy.setUser(userRequestContext.edit(user));
 		driver.edit(applicationProxy, requestContext);

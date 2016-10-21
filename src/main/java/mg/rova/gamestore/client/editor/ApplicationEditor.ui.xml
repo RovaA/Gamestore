@@ -8,11 +8,12 @@
 		<m:MaterialColumn grid="l12" shadow="1">
 			<g:VerticalPanel>
 				<m:MaterialButton ui:field="deleteButton" text="Delete"></m:MaterialButton>
-				<b:TextBox ui:field="title" placeholder="Title..."></b:TextBox>
-				<b:TextBox ui:field="keyword" placeholder="Keyword..."></b:TextBox>
-				<b:TextBox ui:field="author" placeholder="Author..."></b:TextBox>
+				<m:MaterialTextBox ui:field="title" placeholder="Title"></m:MaterialTextBox>
+				<m:MaterialTextBox ui:field="keyword" placeholder="Keyword"></m:MaterialTextBox>
+				<m:MaterialTextBox ui:field="author" placeholder="Author"></m:MaterialTextBox>
+				<e:CategoryDropdownEditor ui:field="category"></e:CategoryDropdownEditor>
 				<e:ApplicationPathEditor ui:field="path" />
-				<b:TextArea ui:field="description" placeholder="Description..."></b:TextArea>
+				<m:MaterialTextArea ui:field="description" placeholder="Description" iconType="FACE" helperText="Brief info *"></m:MaterialTextArea>
 			</g:VerticalPanel>
 		</m:MaterialColumn>
 	</g:HTMLPanel>
