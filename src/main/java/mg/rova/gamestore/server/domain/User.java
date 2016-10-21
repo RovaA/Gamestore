@@ -33,7 +33,7 @@ public class User {
 
 	private String password;
 
-	@OneToMany(targetEntity = Application.class, cascade = { CascadeType.ALL }, mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = Application.class, cascade = { CascadeType.ALL }, mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Application> applications = new ArrayList<Application>();
 
 	public User() {
