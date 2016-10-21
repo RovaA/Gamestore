@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import mg.rova.gamestore.client.event.LoginEvent;
 import mg.rova.gamestore.client.event.LoginEventHandler;
+import mg.rova.gamestore.client.event.SearchEvent;
 import mg.rova.gamestore.client.place.AccountPlace;
 import mg.rova.gamestore.client.place.ApplicationListPlace;
 import mg.rova.gamestore.client.place.CreateAccountPlace;
@@ -24,6 +25,7 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 	protected MenuView view;
 	protected PlaceController placeController;
 	protected LoginServiceAsync loginService;
+	protected EventBus eventBus;
 
 	@Inject
 	public MenuActivity(MenuView view, PlaceController placeController, LoginServiceAsync loginService) {
@@ -34,6 +36,7 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		this.eventBus = eventBus;
 		eventBus.addHandler(LoginEvent.TYPE, new LoginEventHandler() {
 
 			@Override
@@ -154,6 +157,11 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 				}
 			}
 		});
+	}
+
+	@Override
+	public void search(String searchValue) {
+		eventBus.fireEvent(new SearchEvent(searchValue));
 	}
 
 }

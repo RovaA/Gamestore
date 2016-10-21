@@ -2,6 +2,9 @@ package mg.rova.gamestore.client.ui;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -55,6 +58,17 @@ public class MenuViewImpl extends Composite implements MenuView {
 			public void onClose(CloseEvent<String> event) {
 				navBar.setVisible(true);
 				navBarSearch.setVisible(false);
+				presenter.search("");
+			}
+		});
+		searchText.addKeyUpHandler(new KeyUpHandler() {
+
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				final String searchValue = searchText.getValue();
+				if (event.getNativeKeyCode() != KeyCodes.KEY_ENTER)
+					return;
+				presenter.search(searchValue);
 			}
 		});
 	}

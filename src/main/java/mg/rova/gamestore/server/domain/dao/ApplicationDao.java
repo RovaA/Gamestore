@@ -12,6 +12,8 @@ public interface ApplicationDao {
 	
 	public List<Application> findByUserId(Long userId);
 	
+	public List<Application> findByTitle(String title);
+	
 	public List <Application> findAll();
 	
 	public boolean remove(Long id);

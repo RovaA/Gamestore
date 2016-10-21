@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import mg.rova.gamestore.server.domain.Application;
@@ -40,6 +41,30 @@ public class ApplicationDaoImpl implements ApplicationDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<Application> findByUserId(Long userId) {
+		final Session session = getSession();
+		session.beginTransaction().begin();
+		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("user.id", userId));
+		session.beginTransaction().commit();
+		if (criteria.list().isEmpty())
+			return null;
+		return (List<Application>) criteria.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Application> findByTitle(String title) {
+		final Session session = getSession();
+		session.beginTransaction().begin();
+		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("title", title, MatchMode.ANYWHERE));
+		session.beginTransaction().commit();
+		if (criteria.list().isEmpty())
+			return null;
+		return (List<Application>) criteria.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<Application> findAll() {
 		final Session session = getSession();
 		session.beginTransaction().begin();
@@ -59,22 +84,10 @@ public class ApplicationDaoImpl implements ApplicationDao {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Application> findByUserId(Long userId) {
-		final Session session = getSession();
-		session.beginTransaction().begin();
-		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("user.id", userId));
-		session.beginTransaction().commit();
-		if (criteria.list().isEmpty())
-			return null;
-		return (List<Application>) criteria.list();
-	}
-	
 	protected EntityManager getEntityManager() {
-		return  GuiceFactory.getInstance(EntityManager.class);
+		return GuiceFactory.getInstance(EntityManager.class);
 	}
-	
+
 	protected Session getSession() {
 		return getEntityManager().unwrap(Session.class);
 	}

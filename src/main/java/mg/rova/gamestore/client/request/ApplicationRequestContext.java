@@ -19,6 +19,8 @@ public interface ApplicationRequestContext extends RequestContext {
 
 	Request<List<ApplicationProxy>> findByUserId(Long userId);
 
+	Request<List<ApplicationProxy>> findByTitle(String title);
+
 	Request<List<ApplicationProxy>> findAll();
 
 	Request<Boolean> remove(Long id);

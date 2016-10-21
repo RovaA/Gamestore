@@ -5,7 +5,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 public interface MenuView extends IsWidget {
 
 	public void showToast(String message);
-	
+
 	public void showLogout(boolean show);
 
 	public void setPresenter(Presenter presenter);
@@ -23,5 +23,7 @@ public interface MenuView extends IsWidget {
 		void onLogin();
 
 		void onLogout();
+
+		void search(String searchValue);
 	}
 }
