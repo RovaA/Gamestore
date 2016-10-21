@@ -31,7 +31,7 @@ public class Application {
 
 	private String keyword;
 
-	private String Author;
+	private String author;
 
 	private Date date;
 
@@ -84,11 +84,11 @@ public class Application {
 	}
 
 	public String getAuthor() {
-		return Author;
+		return author;
 	}
 
 	public void setAuthor(String author) {
-		Author = author;
+		this.author = author;
 	}
 
 	public Date getDate() {

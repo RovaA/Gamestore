@@ -70,4 +70,9 @@ public class HomeViewImpl extends Composite implements HomeView {
 		panel.add(materialCard);
 	}
 
+	@Override
+	public void clear() {
+		panel.clear();
+	}
+
 }

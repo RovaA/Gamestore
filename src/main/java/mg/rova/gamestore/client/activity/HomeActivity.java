@@ -42,4 +42,10 @@ public class HomeActivity extends AbstractActivity implements HomeView.Presenter
 		});
 	}
 
+	@Override
+	public void onStop() {
+		super.onStop();
+		view.clear();
+	}
+
 }
