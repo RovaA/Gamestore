@@ -33,6 +33,8 @@ public class ApplicationDaoImpl implements ApplicationDao {
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("id", id));
 		session.beginTransaction().commit();
+		if (criteria.list().isEmpty())
+			return null;
 		return (Application) criteria.list().get(0);
 	}
 
@@ -64,6 +66,8 @@ public class ApplicationDaoImpl implements ApplicationDao {
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(Application.class).add(Restrictions.like("user.id", userId));
 		session.beginTransaction().commit();
+		if (criteria.list().isEmpty())
+			return null;
 		return (List<Application>) criteria.list();
 	}
 	

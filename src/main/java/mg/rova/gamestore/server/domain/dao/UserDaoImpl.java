@@ -15,7 +15,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User persist(User user) {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		Session session = getSession();
 		session.beginTransaction().begin();
 		session.persist(user);
 		session.flush();
@@ -25,26 +25,30 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User authenticate(String username, String password) {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		Session session = getSession();
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(User.class).add(Restrictions.like("username", username)).add(Restrictions.like("password", password));
 		session.beginTransaction().commit();
+		if (criteria.list().isEmpty())
+			return null;
 		return (User) criteria.list().get(0);
 	}
 
 	@Override
 	public User findById(Long id) {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		Session session = getSession();
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(User.class).add(Restrictions.like("id", id));
 		session.beginTransaction().commit();
+		if (criteria.list().isEmpty())
+			return null;
 		return (User) criteria.list().get(0);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll() {
-		Session session = GuiceFactory.getInstance(EntityManager.class).unwrap(Session.class);
+		Session session = getSession();
 		session.beginTransaction().begin();
 		Criteria criteria = session.createCriteria(User.class);
 		session.beginTransaction().commit();
@@ -53,13 +57,21 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean remove(Long id) {
-		EntityManager entityManager = GuiceFactory.getInstance(EntityManager.class);
-		Session session = entityManager.unwrap(Session.class);
+		EntityManager entityManager = getEntityManager();
+		Session session = getSession();
 		session.beginTransaction().begin();
 		entityManager.remove(session.get(User.class, id));
 		session.flush();
 		session.beginTransaction().commit();
 		return true;
+	}
+	
+	protected EntityManager getEntityManager() {
+		return  GuiceFactory.getInstance(EntityManager.class);
+	}
+	
+	protected Session getSession() {
+		return getEntityManager().unwrap(Session.class);
 	}
 
 }
