@@ -102,7 +102,7 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 					view.showToast("You must be logged first");
 					return;
 				}
-				if (placeController.getWhere() instanceof AccountPlace)
+				if (placeController.getWhere() instanceof ApplicationListPlace)
 					return;
 				placeController.goTo(new ApplicationListPlace(""));
 			}
