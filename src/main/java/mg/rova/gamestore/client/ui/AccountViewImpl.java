@@ -38,8 +38,8 @@ public class AccountViewImpl extends Composite implements AccountView {
 	}
 
 	@UiHandler("deleteButton")
-	void onCancel(ClickEvent e) {
-		presenter.onCancelling();
+	void onDelete(ClickEvent e) {
+		presenter.onDelete();
 	}
 
 	@Override

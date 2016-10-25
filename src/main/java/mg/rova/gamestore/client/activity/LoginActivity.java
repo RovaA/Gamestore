@@ -62,4 +62,10 @@ public class LoginActivity extends AbstractActivity implements LoginView.Present
 		placeController.goTo(new HomePlace(""));
 	}
 
+	@Override
+	public void onStop() {
+		super.onStop();
+		view.clear();
+	}
+
 }

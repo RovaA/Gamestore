@@ -11,6 +11,8 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import mg.rova.gamestore.client.event.LoginEvent;
 import mg.rova.gamestore.client.event.LoginEventHandler;
+import mg.rova.gamestore.client.event.LogoutEvent;
+import mg.rova.gamestore.client.event.LogoutEventHandler;
 import mg.rova.gamestore.client.event.SearchEvent;
 import mg.rova.gamestore.client.place.AccountPlace;
 import mg.rova.gamestore.client.place.ApplicationListPlace;
@@ -42,6 +44,13 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 			@Override
 			public void onLogin() {
 				view.showLogout(true);
+			}
+		});
+		eventBus.addHandler(LogoutEvent.TYPE, new LogoutEventHandler() {
+
+			@Override
+			public void onLogout() {
+				view.showLogout(false);
 			}
 		});
 		view.setPresenter(this);

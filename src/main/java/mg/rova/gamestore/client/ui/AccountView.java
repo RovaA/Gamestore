@@ -21,6 +21,6 @@ public interface AccountView extends IsWidget {
 
 		void onEdit();
 
-		void onCancelling();
+		void onDelete();
 	}
 }
